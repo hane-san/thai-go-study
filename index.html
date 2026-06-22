@@ -1,0 +1,1572 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>旅行タイ語 街歩きノート</title>
+<style>
+:root{
+  --bg1:#0aa8a7; --bg2:#ff7a59; --bg3:#ffe66d;
+  --paper:#fffaf1; --paper2:#fffdf8; --ink:#251b16; --muted:#6e625a;
+  --thai:#102a43; --blue:#087ca7; --teal:#00a896; --gold:#ffbf3f; --rose:#ef476f;
+  --line:rgba(44,70,86,.15); --shadow:0 16px 34px rgba(10,32,50,.22);
+  --safeBottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0;overflow:hidden}
+body{
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Noto Sans Thai",Thonburi,sans-serif;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(255,230,109,.50),transparent 13rem),
+    radial-gradient(circle at 92% 8%,rgba(239,71,111,.28),transparent 17rem),
+    radial-gradient(circle at 18% 92%,rgba(0,168,150,.28),transparent 18rem),
+    linear-gradient(145deg,#06a6a8 0%,#19b7a8 38%,#ff7a59 72%,#ffbf3f 100%);
+}
+.app{height:100dvh;display:grid;grid-template-rows:48px 42px 1fr 58px;background:rgba(255,255,255,.02)}
+header{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 10px;color:#fff;
+  background:linear-gradient(90deg,rgba(255,255,255,.13),rgba(255,255,255,.04));
+  border-bottom:1px solid rgba(255,255,255,.16);backdrop-filter:blur(12px);z-index:5;
+}
+h1{font-size:.88rem;line-height:1;margin:0;font-weight:950;letter-spacing:.02em}.sub{font-size:.52rem;opacity:.84;margin-top:3px}.badge{font-size:.55rem;font-weight:950;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.12);padding:.25rem .48rem;border-radius:999px;white-space:nowrap}
+.panelnav{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:5px;padding:6px 8px;background:rgba(7,37,57,.72);border-bottom:1px solid rgba(255,255,255,.12);z-index:4}.navbtn{border:0;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;font-size:.58rem;font-weight:950;padding:.38rem .35rem}.navbtn.active{background:linear-gradient(90deg,var(--gold),#ffe19b);color:#4a3412;box-shadow:0 7px 16px rgba(0,0,0,.17)}
+.viewport{overflow:hidden;position:relative}.strip{height:100%;width:300%;display:flex;transition:transform .34s cubic-bezier(.18,.82,.24,1)}.screen{width:33.333333%;height:100%;overflow:auto;padding:8px 8px calc(58px + var(--safeBottom));scroll-behavior:smooth}.screen::-webkit-scrollbar{display:none}
+.lessonTabs{position:relative;display:flex;gap:6px;overflow-x:auto;padding:20px 8px 6px;background:linear-gradient(180deg,#ffd468 0%,#ff9c5f 34%,#17b0ad 35%,#0b6d88 100%);border-top:1px solid rgba(255,255,255,.45);box-shadow:0 -10px 24px rgba(0,0,0,.14);z-index:5}.lessonTabs::-webkit-scrollbar{display:none}.tab{position:relative;border:2px solid rgba(255,255,255,.62);background:rgba(255,255,255,.96);color:#0c6079;min-width:36px;height:28px;border-radius:999px;font-size:.64rem;font-weight:950;box-shadow:0 4px 10px rgba(11,45,69,.14)}.tab.active{background:linear-gradient(90deg,#ef476f,#ff9f1c);color:#fff;box-shadow:0 9px 18px rgba(239,71,111,.25)}
+.card,.sheet,.wordcard,.lettercard,.numcard{background:linear-gradient(180deg,var(--paper2),var(--paper));border:1px solid rgba(255,255,255,.72);box-shadow:var(--shadow);border-radius:24px;overflow:hidden}.sheet{margin-bottom:10px}.top{padding:10px 12px;color:#fff}.top.lesson{background:linear-gradient(135deg,#ef476f,#ff9f1c)}.top.left{background:linear-gradient(135deg,#087ca7,#00a896)}.top.right{background:linear-gradient(135deg,#ff7a59,#ffbf3f)}.micro{font-size:.52rem;font-weight:950;opacity:.9}.title{font-size:1.05rem;line-height:1.18;font-weight:950;margin-top:2px}.subtitle{font-size:.56rem;opacity:.88;margin-top:3px}.body{padding:10px}.hintbox{background:linear-gradient(180deg,#fff8e8,#fffdf8);border:1px solid var(--line);border-radius:18px;padding:9px;margin-bottom:8px}.hintbox h2{font-size:.82rem;color:#135c70;margin:.05rem 0 .35rem}.hintbox p{font-size:.62rem;line-height:1.58;color:#3c302b;margin:.28rem 0}.formula{border:1px dashed rgba(19,92,112,.24);border-radius:18px;background:#fff;padding:9px;margin-top:8px}.formula .th{font-size:1.25rem;color:var(--thai);font-weight:950;line-height:1.2}.roman{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#0f6d77;font-size:.58rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.kana{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#8a4d20;font-size:.56rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.jp{font-size:.62rem;line-height:1.42;color:#42342d;font-weight:850}.note{font-size:.53rem;color:var(--muted);line-height:1.45;font-weight:800}.tagrow{display:flex;flex-wrap:wrap;gap:5px;margin:.4rem 0}.tag{font-size:.5rem;font-weight:950;border-radius:999px;padding:.19rem .42rem;color:#fff;background:linear-gradient(90deg,var(--teal),var(--blue))}.cards{display:grid;gap:8px}.phrase{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,#fff,#fff8ec);padding:8px 8px;box-shadow:0 7px 16px rgba(42,82,70,.06);position:relative}.phrase .th{font-size:1.08rem;color:var(--thai);font-weight:950;line-height:1.2}.speakable{cursor:pointer}.playing{outline:2px solid var(--gold);background:linear-gradient(180deg,rgba(243,183,77,.24),#fffaf0)!important}.speakmini{position:absolute;right:7px;top:7px;border:0;background:rgba(21,148,129,.11);color:#14636f;border-radius:999px;font-size:.5rem;font-weight:950;padding:.18rem .38rem}.generator{position:sticky;top:0;z-index:3;margin-bottom:9px;border-radius:22px;border:1px solid rgba(255,255,255,.72);background:linear-gradient(180deg,#fffdf8,#fff3dc);box-shadow:0 12px 26px rgba(10,32,50,.16);padding:10px}.genlabel{font-size:.52rem;font-weight:950;color:#9a6420}.genphrase{font-size:1.20rem;line-height:1.25;font-weight:950;color:#12355b;margin:.18rem 0}.genjp{font-size:.58rem;font-weight:850;color:#4a392f}.genbtns{display:flex;gap:6px;margin-top:8px}.smallbtn{border:0;border-radius:999px;background:#143d5a;color:#fff;font-size:.54rem;font-weight:950;padding:.42rem .58rem}.smallbtn.secondary{background:#fff;border:1px solid var(--line);color:#16445e}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.wordcard,.lettercard,.numcard{box-shadow:0 7px 16px rgba(10,32,50,.08);border-radius:18px;padding:8px;background:linear-gradient(180deg,#fff,#fff9ed)}.wordcard .th,.lettercard .big,.numcard .th{font-size:1.05rem;font-weight:950;color:var(--thai);line-height:1.15}.pill{display:inline-block;font-size:.46rem;font-weight:950;color:#fff;background:linear-gradient(90deg,#c7773d,#d96d5c);border-radius:999px;padding:.16rem .34rem;margin-top:4px}.sectionTitle{font-size:.72rem;font-weight:950;color:#fff;margin:6px 4px 6px;text-shadow:0 1px 8px rgba(0,0,0,.24)}.leftIntro{font-size:.58rem;line-height:1.55;color:#fff;margin:0 4px 8px;opacity:.94}.alphabetGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.lettercard{padding:7px 6px}.lettercard .big{font-size:1.35rem;text-align:center}.lettercard .name{font-size:.48rem;text-align:center;color:#0f6d77;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.lettercard .meta{font-size:.45rem;text-align:center;color:#775b43;font-weight:850;margin-top:1px}.numgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.numcard{text-align:center}.numcard .arabic{font-size:.58rem;color:#775b43;font-weight:950}.numcard .roman{white-space:normal}.toneRow{display:grid;gap:6px}.tone{border:1px solid var(--line);border-radius:16px;background:#fff;padding:8px;position:relative}.tone .th{font-size:1rem;color:var(--thai);font-weight:950}.tone .jp{font-size:.56rem}.category{display:flex;gap:5px;overflow-x:auto;margin:0 0 8px;padding:0 2px}.category::-webkit-scrollbar{display:none}.catbtn{border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.20);color:#fff;border-radius:999px;font-size:.52rem;font-weight:950;padding:.34rem .55rem;white-space:nowrap}.catbtn.active{background:#fff;color:#9d4d2a}.miniHelp{font-size:.54rem;line-height:1.5;color:#fff;margin:0 4px 8px;opacity:.95}.footerNote{font-size:.50rem;color:rgba(255,255,255,.86);line-height:1.5;margin:10px 4px 2px}
+@media(max-height:720px),(max-width:430px){
+  .app{grid-template-rows:45px 38px 1fr 55px} header{padding:6px 9px} h1{font-size:.80rem}.sub{font-size:.48rem}.badge{font-size:.50rem}.screen{padding:6px 6px calc(60px + var(--safeBottom))}.top{padding:8px 10px}.title{font-size:.93rem}.subtitle,.micro{font-size:.49rem}.body{padding:8px}.hintbox{padding:8px;border-radius:16px}.hintbox h2{font-size:.74rem}.hintbox p{font-size:.56rem;line-height:1.5}.formula .th{font-size:1.05rem}.phrase .th{font-size:.96rem}.roman{font-size:.50rem}.kana{font-size:.49rem}.jp{font-size:.55rem}.note{font-size:.48rem}.grid{gap:6px}.wordcard,.lettercard,.numcard{padding:7px 6px;border-radius:15px}.alphabetGrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.lettercard .big{font-size:1.16rem}.lettercard .name,.lettercard .meta{font-size:.40rem}.numgrid{gap:5px}.genphrase{font-size:1.02rem}.lessonTabs{padding:18px 6px 6px}.tab{min-width:32px;height:25px;font-size:.56rem}.navbtn{font-size:.52rem}}
+
+/* --- Bangkok street-pop refresh --- */
+:root{
+  --bg1:#ff7a59; --bg2:#00a6a6; --bg3:#ffd166;
+  --paper:#fff9ef; --paper2:#fffef9; --ink:#24170f; --muted:#6b5b4e;
+  --thai:#33201a; --blue:#087ca7; --teal:#00a896; --gold:#ffc145; --rose:#ef476f;
+  --line:rgba(70,45,28,.13); --shadow:0 12px 24px rgba(80,43,23,.16);
+}
+body{
+  background:
+    radial-gradient(circle at 9% 4%,rgba(255,209,102,.62),transparent 12rem),
+    radial-gradient(circle at 92% 10%,rgba(239,71,111,.36),transparent 16rem),
+    radial-gradient(circle at 18% 92%,rgba(0,168,150,.28),transparent 18rem),
+    linear-gradient(145deg,#ff7a59 0%,#ffb347 32%,#00a896 68%,#087ca7 100%);
+}
+body::before{
+  opacity:.20;
+  background:
+    radial-gradient(circle at 18px 18px,rgba(255,255,255,.44) 0 2px,transparent 2.5px),
+    radial-gradient(circle at 54px 42px,rgba(255,255,255,.30) 0 3px,transparent 3.5px),
+    linear-gradient(135deg,rgba(255,255,255,.18) 0 8%,transparent 8.3% 100%);
+  background-size:72px 72px,96px 96px,44px 44px;
+  mix-blend-mode:screen;
+}
+header{
+  background:linear-gradient(90deg,#ef476f,#ff9f1c 54%,#00a896);
+  border-bottom:1px solid rgba(255,255,255,.34);
+}
+.panelnav{
+  background:linear-gradient(90deg,rgba(8,124,167,.92),rgba(0,168,150,.88),rgba(239,71,111,.78));
+  border-bottom:1px solid rgba(255,255,255,.22);
+}
+.navbtn{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28)}
+.navbtn.active{background:linear-gradient(90deg,#fff7d6,#ffffff);color:#2f5a53}
+.lessonTabs{background:rgba(255,252,242,.96)}
+.tab{color:#087ca7;border-color:rgba(8,124,167,.16)}
+.tab.active{background:linear-gradient(90deg,#ef476f,#ff9f1c);color:#fff}
+.card,.sheet,.wordcard,.lettercard,.numcard{
+  border:1px solid rgba(255,255,255,.70);
+  box-shadow:var(--shadow);
+}
+.top{color:#fff}
+.top::after{
+  opacity:.20;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.0) 0 20%,rgba(255,255,255,.65) 21% 28%,rgba(255,255,255,.0) 29% 100%),
+    radial-gradient(circle at 50% 50%,rgba(255,255,255,.72) 0 10%,transparent 11%);
+  transform:rotate(-12deg);
+}
+.top.lesson{background:linear-gradient(135deg,#ef476f,#ff9f1c)}
+.top.left{background:linear-gradient(135deg,#087ca7,#00a896)}
+.top.right{background:linear-gradient(135deg,#ff9f1c,#ef476f)}
+.hintbox h2{color:#087ca7}
+.formula{border:1px dashed rgba(239,71,111,.28);background:#fffef9}
+.roman{color:#087ca7}.kana{color:#b85a16}
+.tag{background:linear-gradient(90deg,#00a896,#087ca7)}
+.phrase{background:linear-gradient(180deg,#fff,#fff7e8);box-shadow:0 6px 14px rgba(80,43,23,.08)}
+.speakmini{background:rgba(0,168,150,.12);color:#087063}
+.generator{
+  background:
+    linear-gradient(180deg,#fffef9,#fff4db),
+    linear-gradient(90deg,rgba(239,71,111,.10),rgba(0,168,150,.10));
+  border:1px solid rgba(255,159,28,.28);
+}
+.genphrase{color:#33201a}
+.smallbtn{background:linear-gradient(90deg,#087ca7,#00a896)}
+.smallbtn.secondary{background:#fff;color:#087ca7}
+.wordcard,.lettercard,.numcard{background:linear-gradient(180deg,#fff,#fff8e8)}
+.lettercard{background:linear-gradient(180deg,#ffffff,#f1fffb)}
+.lettercard .name{color:#087ca7}
+.pill{background:linear-gradient(90deg,#ef476f,#ff9f1c)}
+.catbtn{background:linear-gradient(90deg,rgba(8,124,167,.82),rgba(0,168,150,.78));border:1px solid rgba(255,255,255,.38)}
+.catbtn.active{background:#fff;color:#ef476f}
+.thparts{display:inline;line-height:1.45}
+.thchip{
+  display:inline-block;
+  margin:.07rem .05rem;
+  padding:.05rem .16rem .08rem;
+  border-radius:.42rem;
+  line-height:1.15;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.thchip.base{background:rgba(0,168,150,.14);color:#075e5b}
+.thchip.slot{background:rgba(255,159,28,.24);color:#7c3f00;box-shadow:inset 0 -2px 0 rgba(255,159,28,.30)}
+.thchip.soft{background:rgba(239,71,111,.13);color:#9b2448}
+.thchip.polite{background:rgba(8,124,167,.13);color:#075f82}
+.thchip.neg{background:rgba(70,70,70,.11);color:#333}
+.formula .th .thchip,.genphrase .thchip{font-size:inherit}
+.phrase .th .thparts{white-space:normal}
+.phrase .th .thchip{
+  margin:0;
+  padding:.015rem .035rem .045rem;
+  border-radius:.22rem;
+  line-height:1.16;
+  vertical-align:baseline;
+}
+.functionLegend{
+  display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;
+}
+.functionLegend span{
+  font-size:.48rem;font-weight:950;border-radius:999px;padding:.16rem .36rem;background:#fff;border:1px solid var(--line);
+}
+.functionLegend .b{color:#075e5b}.functionLegend .s{color:#7c3f00}.functionLegend .p{color:#075f82}
+
+.lessonExplain{position:relative;overflow:hidden}
+.lessonExplain::before{
+  content:"";position:absolute;right:-20px;top:-20px;width:92px;height:92px;border-radius:50%;
+  background:repeating-linear-gradient(45deg,rgba(239,71,111,.12) 0 8px,rgba(255,191,63,.15) 8px 16px);
+  pointer-events:none;
+}
+.mk{
+  background:linear-gradient(transparent 58%, rgba(255,230,109,.70) 58%);
+  color:#4a3412;
+  padding:0 .05rem;
+  border-radius:.18rem;
+  font-weight:950;
+}
+.mk2{
+  background:rgba(0,168,150,.12);
+  color:#075e5b;
+  padding:.02rem .16rem;
+  border-radius:.38rem;
+  font-weight:950;
+}
+.grammarBox{
+  margin-top:9px;
+  display:grid;
+  gap:7px;
+}
+.grammarHead{
+  display:inline-flex;
+  width:max-content;
+  max-width:100%;
+  font-size:.56rem;
+  font-weight:950;
+  color:#fff;
+  background:linear-gradient(90deg,#ef476f,#ff9f1c);
+  padding:.24rem .55rem;
+  border-radius:999px;
+  box-shadow:0 6px 14px rgba(239,71,111,.14);
+}
+.grammarItem{
+  background:linear-gradient(180deg,#ffffff,#fff8e9);
+  border:1px solid rgba(255,159,28,.22);
+  border-radius:16px;
+  padding:8px 9px;
+  box-shadow:0 5px 12px rgba(20,40,60,.05);
+}
+.grammarLabel{
+  font-size:.58rem;
+  font-weight:950;
+  color:#087ca7;
+  margin-bottom:3px;
+}
+.grammarItem p{
+  font-size:.56rem;
+  line-height:1.62;
+  margin:.1rem 0 0;
+  color:#3c302b;
+}
+.thparts.spacedParts .thchip.spaced{
+  margin:.07rem .08rem;
+  padding:.07rem .20rem .10rem;
+}
+
+/* --- v4: もう少し屋台ポップ＋文法カードの視線誘導 --- */
+header{position:relative;overflow:hidden}
+header::after{content:"ตลาด・คาเฟ่・รถไฟ";position:absolute;right:10px;bottom:-8px;font-size:.46rem;font-weight:950;color:rgba(255,255,255,.55);letter-spacing:.06em;pointer-events:none}.top.lesson .title::before{content:"☕ "}.top.right .title::before{content:"🍜 "}.top.left .title::before{content:"🪧 "}.grammarHead::before{content:"📝";margin-right:.25rem}.grammarItem{border-left:5px solid rgba(239,71,111,.55)}.grammarItem:nth-child(3n){border-left-color:rgba(0,168,150,.62)}.grammarItem:nth-child(3n+1){border-left-color:rgba(255,159,28,.70)}.mk{box-shadow:inset 0 -0.38em rgba(255,230,109,.72)}.mk2{border:1px solid rgba(0,168,150,.18)}.phrase .jp::before{content:"→ ";color:#ef476f;font-weight:950}
+
+/* --- v6: 表示名を自然化＋街歩きポップを少し追加 --- */
+header .sub{letter-spacing:.01em}
+.badge{background:rgba(255,255,255,.20);box-shadow:0 6px 14px rgba(0,0,0,.10)}
+.generator::before{content:"今日の言い換え";display:inline-flex;font-size:.48rem;font-weight:950;color:#fff;background:linear-gradient(90deg,#ef476f,#ff9f1c);border-radius:999px;padding:.16rem .44rem;margin-bottom:.25rem}
+.functionLegend span{box-shadow:0 3px 8px rgba(20,40,60,.04)}
+.functionLegend .n{color:#333}
+.wordcard:hover,.phrase:hover{transform:translateY(-1px)}
+
+
+/* --- v7: 23課化・支払い/写真/聞き返しの屋台ポップ --- */
+.top.lesson{background:linear-gradient(135deg,#ef476f 0%,#ff9f1c 52%,#00a896 100%)}
+.grammarHead{background:linear-gradient(90deg,#00a896,#087ca7,#ef476f)}
+.genlabel::before{content:"🛵 ";}
+.smallbtn{box-shadow:0 5px 10px rgba(8,124,167,.10)}
+.phrase:nth-child(4n+1){border-left:4px solid rgba(255,159,28,.78)}
+.phrase:nth-child(4n+2){border-left:4px solid rgba(0,168,150,.62)}
+.phrase:nth-child(4n+3){border-left:4px solid rgba(239,71,111,.55)}
+.phrase:nth-child(4n){border-left:4px solid rgba(8,124,167,.52)}
+.tagrow .tag:nth-child(odd){background:rgba(255,159,28,.16);border-color:rgba(255,159,28,.22)}
+.tagrow .tag:nth-child(even){background:rgba(0,168,150,.11);border-color:rgba(0,168,150,.18)}
+
+
+/* --- v8: 街歩きポップを少しだけ増量 --- */
+.lessonTabs{background:linear-gradient(90deg,rgba(255,230,109,.92),rgba(0,168,150,.88),rgba(239,71,111,.86));border-top:2px dashed rgba(255,255,255,.6)}
+.tab.active{transform:translateY(-2px) rotate(-1deg);box-shadow:0 8px 18px rgba(239,71,111,.24)}
+.sheet{border-image:linear-gradient(135deg,#ffe66d,#00a896,#ef476f) 1;border-width:1px;border-style:solid}
+.grammarBox{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,250,230,.92));}
+.grammarItem::before{content:"★";color:#ef476f;font-size:.72rem;margin-right:.25rem;vertical-align:middle}
+.wordcard:hover,.phrase:hover{transform:translateY(-1px)}
+
+/* --- v10: 市場・道案内・トラブル用の小さなポップ補強 --- */
+.grammarHead::after{content:"  読み方もここで確認";font-size:.72rem;color:#087ca7;background:rgba(255,230,109,.7);border-radius:999px;padding:.18rem .45rem;margin-left:.35rem}
+.top.lesson .micro::before{content:"✦ ";color:#ffe66d}
+.genlabel::before{content:"屋台メモ ";font-weight:900;color:#ef476f}
+.catbtn[data-cat="shopping"],.catbtn[data-cat="direction"],.catbtn[data-cat="trouble"]{border-style:dashed}
+
+
+
+/* --- v11 public finish: Bangkok neon market clarity --- */
+:root{
+  --bg1:#11b8b2; --bg2:#ff4f7b; --bg3:#ffd23f;
+  --thai:#16243b;
+}
+body{
+  background:
+    radial-gradient(circle at 12% 6%,rgba(255,210,63,.58),transparent 12rem),
+    radial-gradient(circle at 88% 12%,rgba(255,79,123,.36),transparent 16rem),
+    radial-gradient(circle at 18% 88%,rgba(17,184,178,.42),transparent 15rem),
+    linear-gradient(145deg,#058f94 0%,#0fb7b1 36%,#ff7a59 72%,#ffcf4f 100%);
+}
+body::before{opacity:.42;filter:saturate(1.08)}
+header{
+  background:linear-gradient(90deg,rgba(16,36,59,.55),rgba(239,71,111,.30),rgba(255,210,63,.20));
+  box-shadow:0 5px 22px rgba(10,28,50,.18);
+}
+header::after{content:"กรุงเทพ · ตลาด · คาเฟ่";right:12px;bottom:-7px;color:rgba(255,255,255,.50)}
+.sub{font-weight:800;opacity:.92}.badge{background:rgba(255,255,255,.20)}
+.panelnav{background:rgba(14,38,58,.78)}
+.navbtn.active{background:linear-gradient(90deg,#ff4f7b,#ffd23f);color:#21170b}
+.top.lesson{background:linear-gradient(135deg,#ff4f7b 0%,#ff8a3d 53%,#ffd23f 100%)}
+.top.left{background:linear-gradient(135deg,#075b8c 0%,#0fb7b1 100%)}
+.top.right{background:linear-gradient(135deg,#ef476f 0%,#ff9f1c 100%)}
+.sheet,.wordcard,.lettercard,.numcard{border-color:rgba(255,255,255,.82);box-shadow:0 16px 35px rgba(13,40,58,.20)}
+.phrase{background:linear-gradient(180deg,#ffffff 0%,#fff8e9 100%);border-color:rgba(255,159,28,.22)}
+.phrase .th{font-size:1.10rem;letter-spacing:.005em}.formula .th{font-size:1.28rem}
+.thchip{font-weight:950;transition:filter .15s ease, transform .15s ease}.thchip:hover{filter:saturate(1.15)}
+.phrase .th .thchip,.genphrase .thchip{
+  background:transparent!important;
+  padding:.015rem .035rem .055rem;
+  border-radius:.18rem;
+}
+.phrase .th .thchip.base,.genphrase .thchip.base{color:#006d77;box-shadow:inset 0 -.28em rgba(0,168,150,.18)}
+.phrase .th .thchip.slot,.genphrase .thchip.slot{color:#9a4c00;box-shadow:inset 0 -.30em rgba(255,189,64,.34)}
+.phrase .th .thchip.soft,.genphrase .thchip.soft{color:#bb2559;box-shadow:inset 0 -.28em rgba(239,71,111,.16)}
+.phrase .th .thchip.polite,.genphrase .thchip.polite{color:#075f82;box-shadow:inset 0 -.28em rgba(8,124,167,.16)}
+.phrase .th .thchip.neg,.genphrase .thchip.neg{color:#303030;box-shadow:inset 0 -.28em rgba(20,20,20,.14)}
+.formula .thchip{border:1px solid rgba(255,255,255,.72)}
+.functionLegend span{font-size:.50rem;background:rgba(255,255,255,.80)}
+.grammarHead{background:linear-gradient(90deg,#0fb7b1,#ff4f7b,#ff9f1c)}
+.grammarItem{background:linear-gradient(180deg,#fff,#fff7e7);border-left-width:6px}
+.grammarLabel{font-size:.60rem}.grammarItem p{font-size:.58rem;line-height:1.68}.mk{background:linear-gradient(transparent 54%, rgba(255,210,63,.78) 54%)}.mk2{background:rgba(17,184,178,.14)}
+.note,.footerNote{font-size:.58rem;line-height:1.6;color:#59483f}.genlabel{font-size:.58rem;color:#69412c}.smallbtn{background:linear-gradient(90deg,#0fb7b1,#087ca7)}.smallbtn.secondary{background:#fff;color:#075f82}
+
+
+
+/* --- v12: Chao Phraya sunset + temple silhouette + pop stalls footer --- */
+body{position:relative}
+body::after{
+  content:"";
+  position:fixed;
+  left:0; right:0; bottom:0;
+  height:190px;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(255,195,64,0) 0%,rgba(255,195,64,.10) 34%,rgba(255,79,123,.12) 64%,rgba(12,53,78,.28) 100%),
+    radial-gradient(ellipse at 50% 18%,rgba(255,213,104,.55) 0 16%,rgba(255,213,104,0) 17%),
+    linear-gradient(180deg,rgba(255,255,255,0) 0 58%,rgba(16,127,152,.16) 58% 73%,rgba(13,93,118,.28) 73% 100%);
+  z-index:0;
+}
+#app{position:relative;z-index:1}
+.lessonTabs::before{
+  content:"";
+  position:absolute;
+  left:0; right:0; top:-22px;
+  height:34px;
+  pointer-events:none;
+  background:#2c2340;
+  clip-path:polygon(0 100%,0 72%,7% 64%,9% 42%,11% 64%,17% 56%,20% 74%,24% 58%,26% 14%,28% 0,30% 14%,32% 58%,36% 76%,42% 68%,46% 44%,48% 70%,54% 58%,58% 76%,63% 52%,66% 76%,72% 62%,76% 78%,81% 58%,85% 70%,89% 48%,92% 70%,96% 62%,100% 72%,100% 100%);
+  opacity:.94;
+}
+.lessonTabs::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; top:-5px;
+  height:15px;
+  pointer-events:none;
+  background:repeating-linear-gradient(90deg,#ef476f 0 8%,#ffd23f 8% 16%,#0fb7b1 16% 24%,#ff9f1c 24% 32%,#087ca7 32% 40%);
+  clip-path:polygon(0 100%,0 44%,5% 72%,10% 38%,15% 72%,20% 36%,25% 68%,30% 34%,35% 70%,40% 40%,45% 72%,50% 38%,55% 71%,60% 34%,65% 70%,70% 39%,75% 72%,80% 34%,85% 70%,90% 38%,95% 72%,100% 44%,100% 100%);
+  opacity:.95;
+}
+.lessonTabs .tab{margin-top:1px}
+.tab.active{transform:translateY(-2px) rotate(-1deg)}
+.generator::after{
+  content:"チャオプラヤーの夕暮れみたいな色で、今日のひとことを覚える";
+  display:block;
+  font-size:.47rem;
+  line-height:1.4;
+  color:#82634a;
+  margin-top:.25rem;
+}
+.headerGlow, .riverHint{display:none}
+
+
+
+/* --- final polish: public readability pass --- */
+.generator::after{content:none!important;display:none!important}
+.tagrow .tag{
+  color:#1c4050!important;
+  background:rgba(255,255,255,.84)!important;
+  border:1px solid rgba(8,124,167,.16)!important;
+  text-shadow:none!important;
+}
+.tagrow .tag:nth-child(odd){color:#7c3f00!important;background:rgba(255,244,213,.92)!important;border-color:rgba(255,159,28,.26)!important}
+.tagrow .tag:nth-child(even){color:#075e5b!important;background:rgba(235,255,251,.92)!important;border-color:rgba(0,168,150,.22)!important}
+.footerNote{
+  color:#47372f!important;
+  background:rgba(255,250,241,.88);
+  border:1px solid rgba(255,255,255,.62);
+  border-radius:16px;
+  padding:8px 9px;
+  box-shadow:0 8px 18px rgba(12,40,58,.10);
+}
+.leftIntro,.miniHelp{
+  color:#fffef8!important;
+  text-shadow:0 1px 8px rgba(16,36,59,.24);
+}
+.sectionTitle{
+  color:#fffef8!important;
+  text-shadow:0 2px 10px rgba(16,36,59,.28);
+}
+.lessonTabs{scroll-padding-left:8px}
+.tab{font-family:"Noto Sans Thai",Thonburi,-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;line-height:1}
+.catbtn{box-shadow:0 4px 10px rgba(10,42,52,.10);text-shadow:0 1px 2px rgba(0,0,0,.12)}
+.catbtn.active{text-shadow:none;box-shadow:0 5px 12px rgba(255,255,255,.15)}
+.speakmini{color:#075f82;background:rgba(255,255,255,.86);border:1px solid rgba(8,124,167,.14)}
+.grammarHead::after{color:#16445e;background:rgba(255,230,109,.82)}
+.badge{color:#fff;background:rgba(20,36,56,.30);border-color:rgba(255,255,255,.36)}
+
+</style>
+</head>
+<body>
+<div class="app" id="app">
+<header>
+  <div><h1>旅行タイ語 街歩きノート</h1><div class="sub">バンコクの屋台・市場・カフェで使う、聞けるタイ語メモ</div></div>
+  <div class="badge" id="badge">1 / 32</div>
+</header>
+<nav class="panelnav">
+  <button class="navbtn" data-panel="0">← 文字</button>
+  <button class="navbtn active" data-panel="1">レッスン</button>
+  <button class="navbtn" data-panel="2">単語 →</button>
+</nav>
+<div class="viewport" id="viewport">
+  <div class="strip" id="strip">
+    <section class="screen leftScreen" id="leftScreen"></section>
+    <main class="screen lessonScreen" id="lessonScreen"></main>
+    <aside class="screen rightScreen" id="rightScreen"></aside>
+  </div>
+</div>
+<nav class="lessonTabs" id="lessonTabs"></nav>
+</div>
+<script>
+const lessons = [
+  {
+    title:'挨拶とครับ', area:'Bangkok入口', slot:null,
+    pattern:'สวัสดีครับ', roman:'sawàtdii khráp', kana:'サワッディー クラップ', jp:'こんにちは。',
+    concept:'男性話者の旅行タイ語では、文末の ครับ khráp を基本装備にします。意味を足すというより、文全体を丁寧にする小さな制服みたいな語です。',
+    grammar:[
+      {label:'語尾のしくみ', text:'【ครับ khráp】は男性話者が文末につける丁寧語尾です。日本語の「です・ます」に完全対応ではなく、命令・依頼・返事・自己紹介まで文全体をやわらかくします。'},
+      {label:'語順の入口', text:'【ผม phǒm】は男性の「私」、【เป็น pen】は「〜である」、【คนญี่ปุ่น khon yîipùn】は「日本人」。つまり ผม เป็น คนญี่ปุ่น ครับ は「私｜である｜日本人｜丁寧」です。'},
+      {label:'発音メモ', text:'【ครับ khráp】はカタカナの「クラップ」より、khr の息を少し強く出して、最後は短く止めます。旅行では完璧より、毎回落とさないことが大事です。'}
+    ],
+    notes:['まずは ครับ を落とさず言う','ผม は「私」だが、旅行短文では省略も多い','ありがとう・すみませんもครับを足す'],
+    phrases:[
+      ['สวัสดีครับ','sawàtdii khráp','サワッディー クラップ','こんにちは。'],
+      ['ขอบคุณครับ','khɔ̀ɔp-khun khráp','コープ クン クラップ','ありがとうございます。'],
+      ['ขอโทษครับ','khɔ̌ɔ-thôot khráp','コー トート クラップ','すみません。'],
+      ['ไม่เป็นไรครับ','mâi pen rai khráp','マイ ペン ライ クラップ','大丈夫です。'],
+      ['ใช่ครับ','châi khráp','チャイ クラップ','はい／そうです。'],
+      ['ไม่ใช่ครับ','mâi châi khráp','マイ チャイ クラップ','いいえ／違います。'],
+      ['ผมเป็นคนญี่ปุ่นครับ','phǒm pen khon yîipùn khráp','ポム ペン コン イープン クラップ','私は日本人です。'],
+      ['ผมพูดไทยได้นิดหน่อยครับ','phǒm phûut thai dâi nít-nɔ̀i khráp','ポム プート タイ ダイ ニッ ノイ クラップ','タイ語を少し話せます。']
+    ]
+  },
+  {
+    title:'ขอ {X} หน่อยครับ', area:'お願いする', slot:'noun',
+    pattern:'ขอ {X} หน่อยครับ', roman:'khɔ̌ɔ {X} nɔ̀i khráp', kana:'コー {X} ノイ クラップ', jp:'{X}をください／お願いできますか。',
+    concept:'ขอ は「ください・お願いする」の入口です。หน่อย を入れると、少しやわらかいお願いになります。Xを入れ替えるだけで、旅行中の依頼がかなり作れます。',
+    grammar:[
+      {label:'型の形', text:'【ขอ khɔ̌ɔ】は「求める・ください」の基軸です。ここに【X】を入れて、最後に【หน่อย nɔ̀i】と【ครับ khráp】を置くと「Xを少しお願いできますか」の柔らかい旅行文になります。'},
+      {label:'なぜหน่อยを入れる？', text:'【หน่อย nɔ̀i】は直訳すると「少し」ですが、依頼では「ちょっとお願いします」のクッションです。屋台・ホテル・駅で急に頼むとき、これがあると角が立ちにくいです。'},
+      {label:'読み方の切れ目', text:'文としては自然に【ขอน้ำหน่อยครับ】と続けて書きます。ただし学習上は ขอ｜น้ำ｜หน่อย｜ครับ と分けると、「お願い｜中身｜やわらげ｜男性丁寧」が見えます。'}
+    ],
+    notes:['Xに物・サービスを入れる','最後のครับで男性話者の丁寧さを固定','困ったらこの型でかなり戦える'],
+    phrases:[
+      ['ขอน้ำหน่อยครับ','khɔ̌ɔ náam nɔ̀i khráp','コー ナーム ノイ クラップ','水をください。'],
+      ['ขอเมนูหน่อยครับ','khɔ̌ɔ mee-nuu nɔ̀i khráp','コー メーヌー ノイ クラップ','メニューをください。'],
+      ['ขอถุงหน่อยครับ','khɔ̌ɔ thǔng nɔ̀i khráp','コー トゥン ノイ クラップ','袋をください。'],
+      ['ขอใบเสร็จหน่อยครับ','khɔ̌ɔ bai-sèt nɔ̀i khráp','コー バイ セット ノイ クラップ','レシートをください。'],
+      ['ขอพูดช้าๆหน่อยครับ','khɔ̌ɔ phûut cháa cháa nɔ̀i khráp','コー プート チャー チャー ノイ クラップ','ゆっくり話してください。'],
+      ['ขอดูหน่อยครับ','khɔ̌ɔ duu nɔ̀i khráp','コー ドゥー ノイ クラップ','少し見せてください。'],
+      ['ขออันนี้หน่อยครับ','khɔ̌ɔ an níi nɔ̀i khráp','コー アン ニー ノイ クラップ','これをください。'],
+      ['ขอช่วยหน่อยครับ','khɔ̌ɔ chûai nɔ̀i khráp','コー チュアイ ノイ クラップ','少し助けてください。']
+    ]
+  },
+  {
+    title:'เอา {X} ครับ', area:'注文する', slot:'food',
+    pattern:'เอา {X} ครับ', roman:'ao {X} khráp', kana:'アオ {X} クラップ', jp:'{X}にします／{X}ください。',
+    concept:'เอา は「取る・選ぶ」から、注文の「これにします」に使えます。屋台やカフェでは ขอ より短く、指差しと相性がいい形です。',
+    grammar:[
+      {label:'ขอとの違い', text:'【ขอ】は「ください・お願い」の感じ、【เอา ao】は「それを取る・それにする」の感じです。屋台で指差しながら【เอาอันนี้ครับ】と言うと、「これにします」になります。'},
+      {label:'語順', text:'基本は【เอา + 食べ物 + ครับ】です。動詞の形は変わりません。人称や時制で活用しないので、単語を入れ替えるだけで注文文になります。'},
+      {label:'辛さ調整', text:'【ไม่ mâi】は否定で、形は【ไม่ + 形容詞/動詞】です。だから ไม่เผ็ดครับ は「辛くないでお願いします」。เผ็ดน้อยครับ は「辛さ少なめ」です。'}
+    ],
+    notes:['指差し＋เอาอันนี้ครับ が強い','食べ物名を入れると注文になる','辛さ調整は ไม่เผ็ด / เผ็ดน้อย を追加'],
+    phrases:[
+      ['เอาอันนี้ครับ','ao an níi khráp','アオ アン ニー クラップ','これにします。'],
+      ['เอาข้าวผัดครับ','ao khâao-phàt khráp','アオ カーオ パット クラップ','チャーハンにします。'],
+      ['เอาผัดไทยครับ','ao phàt-thai khráp','アオ パッタイ クラップ','パッタイにします。'],
+      ['เอากาแฟเย็นครับ','ao kaa-fɛɛ yen khráp','アオ ガーフェー イェン クラップ','アイスコーヒーにします。'],
+      ['เอาน้ำเปล่าครับ','ao náam plàao khráp','アオ ナーム プラーオ クラップ','水にします。'],
+      ['ไม่เผ็ดครับ','mâi phèt khráp','マイ ペット クラップ','辛くしないでください。'],
+      ['เผ็ดน้อยครับ','phèt nɔ́ɔi khráp','ペット ノーイ クラップ','少し辛くしてください。'],
+      ['กลับบ้านครับ','klàp bâan khráp','グラップ バーン クラップ','持ち帰りでお願いします。']
+    ]
+  },
+  {
+    title:'{数字} บาทครับ', area:'値段と数字', slot:'number',
+    pattern:'{NUM} บาทครับ', roman:'{NUM} bàat khráp', kana:'{NUM} バート クラップ', jp:'{NUM}バーツです。',
+    concept:'数字は旅行で毎日使うので、単体より「値段の形」で聞きます。20は สองสิบ ではなく ยี่สิบ になるなど、少しだけ専用ルールがあります。',
+    grammar:[
+      {label:'値段の形', text:'値段は【数字 + บาท bàat】で作ります。たとえば ยี่สิบบาท は「20バーツ」。最後に ครับ を足すと、こちらが金額を確認・復唱するときにも丁寧です。'},
+      {label:'20だけ注意', text:'20は สองสิบ ではなく【ยี่สิบ yîi-sìp】です。21は ยี่สิบเอ็ด。1の位の「1」は หนึ่ง ではなく【เอ็ด èt】になることがあります。'},
+      {label:'聞き取りのコツ', text:'屋台では数字が速く聞こえます。まず【สิบ sìp = 10】、【ร้อย rɔ́ɔi = 100】、【พัน phan = 1000】を拾うと、値段の桁が見えます。'}
+    ],
+    notes:['まず0〜10、20、100、1000','11は สิบเอ็ด、21は ยี่สิบเอ็ด','値段では บาท bàat をセットで聞く'],
+    phrases:[
+      ['เท่าไหร่ครับ','thâo-rài khráp','タオ ライ クラップ','いくらですか。'],
+      ['ยี่สิบบาทครับ','yîi-sìp bàat khráp','イー シップ バート クラップ','20バーツです。'],
+      ['สามสิบห้าบาทครับ','sǎam-sìp-hâa bàat khráp','サーム シップ ハー バート クラップ','35バーツです。'],
+      ['หนึ่งร้อยยี่สิบบาทครับ','nʉ̀ng-rɔ́ɔi-yîi-sìp bàat khráp','ヌン ローイ イー シップ バート クラップ','120バーツです。'],
+      ['แพงไปครับ','phɛɛng pai khráp','ペーン パイ クラップ','高すぎます。'],
+      ['ลดได้ไหมครับ','lót dâi mái khráp','ロット ダイ マイ クラップ','安くできますか。'],
+      ['จ่ายเงินสดครับ','jàai ngoen-sòt khráp','ジャーイ グン ソット クラップ','現金で払います。'],
+      ['จ่ายด้วยบัตรได้ไหมครับ','jàai dûai bàt dâi mái khráp','ジャーイ ドゥアイ バット ダイ マイ クラップ','カードで払えますか。']
+    ]
+  },
+  {
+    title:'ไป {場所} ครับ', area:'移動する', slot:'place',
+    pattern:'ไป {PLACE} ครับ', roman:'pai {PLACE} khráp', kana:'パイ {PLACE} クラップ', jp:'{PLACE}へ行きます／行ってください。',
+    concept:'ไป は「行く」。タクシーやGrabでは、場所名を足して短く伝えられます。もっと丁寧にしたい時は อยากไป「行きたい」を使います。',
+    grammar:[
+      {label:'行き先を足す', text:'【ไป pai】は「行く」。旅行では【ไป + 場所 + ครับ】だけで「〜へ行きます／行ってください」と通じやすいです。'},
+      {label:'場所名の前置詞は不要？', text:'日本語だと「〜へ」が必要ですが、タイ語ではここでは場所名をそのまま後ろに置けます。つまり ไป สนามบิน ครับ = 行く 空港 丁寧、です。'},
+      {label:'降りる・曲がる', text:'移動では ไป だけでなく、【ลง long】=降りる、【เลี้ยว líao】=曲がる、【ตรงไป trong pai】=まっすぐ行く、もセットで覚えると一気に実戦的です。'}
+    ],
+    notes:['ไป + 場所 でまず通す','ここで降ります＝ลงที่นี่ครับ','右左・まっすぐを追加すると強い'],
+    phrases:[
+      ['ไปสนามบินครับ','pai sanǎam-bin khráp','パイ サナーム ビン クラップ','空港へ行きます。'],
+      ['ไปโรงแรมครับ','pai roong-rɛɛm khráp','パイ ローンレーム クラップ','ホテルへ行きます。'],
+      ['ไปสถานีรถไฟครับ','pai sathǎanii rót-fai khráp','パイ サターニー ロット ファイ クラップ','駅へ行きます。'],
+      ['ไปตลาดครับ','pai talàat khráp','パイ タラート クラップ','市場へ行きます。'],
+      ['ลงที่นี่ครับ','long thîi-nîi khráp','ロン ティー ニー クラップ','ここで降ります。'],
+      ['เลี้ยวซ้ายครับ','líao sáai khráp','リアオ サーイ クラップ','左に曲がってください。'],
+      ['เลี้ยวขวาครับ','líao khwǎa khráp','リアオ クワー クラップ','右に曲がってください。'],
+      ['ตรงไปครับ','trong pai khráp','トロン パイ クラップ','まっすぐ行ってください。']
+    ]
+  },
+  {
+    title:'ไม่ ไหม ได้', area:'否定・疑問・できる', slot:null,
+    pattern:'ไม่ + V   V + ไหม   V + ได้ไหมครับ', roman:'mâi + V   V + mái   V + dâi mái khráp', kana:'マイ + V   V + マイ   V + ダイ マイ クラップ', jp:'〜ない／〜ですか／〜できますか。',
+    concept:'タイ語は動詞が変わりにくいので、ไม่・ไหม・ได้ のような小さい語が文の機能を決めます。ここを型として見ると一気に整理できます。',
+    grammar:[
+      {label:'否定は前に置く', text:'【ไม่ mâi】は否定で、基本は【ไม่ + 動詞/形容詞】です。เข้าใจ = 分かる、ไม่เข้าใจ = 分からない。英語の do not のように動詞を変形しません。'},
+      {label:'疑問は後ろに置く', text:'【ไหม mái】は「〜ですか」を作る文末寄りの疑問語です。มีไหม = ありますか、ได้ไหม = できますか／していいですか。'},
+      {label:'ได้の幅', text:'【ได้ dâi】は「できる」だけでなく、「してよい」「結果としてできた」にも使います。旅行ではまず【ได้ไหมครับ】= できますか／してもいいですか、で覚えると便利です。'}
+    ],
+    notes:['ไม่ は否定で動詞の前','ไหม は疑問で文末寄り','ได้ไหม は「できますか／してもいいですか」'],
+    phrases:[
+      ['ไม่เข้าใจครับ','mâi khâo-jai khráp','マイ カオ ジャイ クラップ','分かりません。'],
+      ['พูดภาษาอังกฤษได้ไหมครับ','phûut phaasǎa angkrìt dâi mái khráp','プート パーサー アングリット ダイ マイ クラップ','英語を話せますか。'],
+      ['ถ่ายรูปได้ไหมครับ','thàai-rûup dâi mái khráp','ターイ ループ ダイ マイ クラップ','写真を撮ってもいいですか。'],
+      ['กินได้ไหมครับ','kin dâi mái khráp','ギン ダイ マイ クラップ','食べられますか。'],
+      ['มีห้องว่างไหมครับ','mii hɔ̂ng wâang mái khráp','ミー ホン ワーン マイ クラップ','空き部屋はありますか。'],
+      ['มีห้องน้ำไหมครับ','mii hɔ̂ng-náam mái khráp','ミー ホン ナーム マイ クラップ','トイレはありますか。'],
+      ['ช่วยเขียนให้หน่อยได้ไหมครับ','chûai khǐan hâi nɔ̀i dâi mái khráp','チュアイ キアン ハイ ノイ ダイ マイ クラップ','書いてもらえますか。'],
+      ['พูดอีกครั้งได้ไหมครับ','phûut ìik khráng dâi mái khráp','プート イーク クラン ダイ マイ クラップ','もう一度言ってもらえますか。']
+    ]
+  },
+  {
+    title:'อยากไป {場所} ครับ', area:'行きたい・予定', slot:'place', mode:'wantPlace',
+    pattern:'อยากไป {PLACE} ครับ', roman:'yàak pai {PLACE} khráp', kana:'ヤーク パイ {PLACE} クラップ', jp:'{PLACE}へ行きたいです。',
+    concept:'อยาก は「〜したい」。อยากไป で「行きたい」になります。単に ไป より、自分の希望を伝える感じが出ます。',
+    grammar:[
+      {label:'อยากの位置', text:'【อยาก yàak】は「〜したい」で、動詞の前に置きます。ไป = 行く、อยากไป = 行きたい。活用ではなく、前に小さな語を足すだけです。'},
+      {label:'行き先の足し方', text:'【อยากไป + 場所】で「場所へ行きたい」です。タイ語では「へ」に当たる語を毎回入れず、場所名をそのまま後ろに置くことが多いです。'},
+      {label:'丁寧に相談する', text:'タクシーやホテルで相談するなら、อยากไปตลาดครับ のように言うと「市場に行きたいです」と柔らかく始められます。'}
+    ],
+    notes:['อยาก + 動詞 = 〜したい','อยากไป + 場所','希望を伝える時に便利'],
+    phrases:[
+      ['อยากไปวัดครับ','yàak pai wát khráp','ヤーク パイ ワット クラップ','寺院へ行きたいです。'],
+      ['อยากไปตลาดครับ','yàak pai talàat khráp','ヤーク パイ タラート クラップ','市場へ行きたいです。'],
+      ['อยากไปร้านกาแฟครับ','yàak pai ráan kaa-fɛɛ khráp','ヤーク パイ ラーン ガーフェー クラップ','カフェへ行きたいです。'],
+      ['อยากไปที่นี่ครับ','yàak pai thîi-nîi khráp','ヤーク パイ ティー ニー クラップ','ここへ行きたいです。'],
+      ['อยากกลับโรงแรมครับ','yàak klàp roong-rɛɛm khráp','ヤーク グラップ ローンレーム クラップ','ホテルへ戻りたいです。'],
+      ['อยากเดินเล่นครับ','yàak dəən lên khráp','ヤーク ドゥーン レン クラップ','散歩したいです。']
+    ]
+  },
+  {
+    title:'มี {X} ไหมครับ', area:'あるか聞く', slot:'noun', mode:'have',
+    pattern:'มี {X} ไหมครับ', roman:'mii {X} mái khráp', kana:'ミー {X} マイ クラップ', jp:'{X}はありますか。',
+    concept:'มี は「ある・持っている」。ไหม をつけると「ありますか？」になります。店・ホテル・駅で毎日使えます。',
+    grammar:[
+      {label:'มีの基本', text:'【มี mii】は「ある／持っている」です。物や設備を探す時は、まず มี + X で考えます。'},
+      {label:'疑問の作り方', text:'【ไหม mái】を後ろにつけると疑問になります。มีห้องน้ำไหมครับ は「トイレありますか」。文末の ครับ で男性丁寧です。'},
+      {label:'なぜ語順がこうなる？', text:'タイ語は「あります｜X｜ですか」のように、機能語を順番に置いて意味を作ります。日本語の助詞「は・が」をそのまま訳さないのがコツです。'}
+    ],
+    notes:['มี + X = Xがある','ไหม = 〜ですか','設備・在庫確認で強い'],
+    phrases:[
+      ['มีห้องน้ำไหมครับ','mii hɔ̂ng-náam mái khráp','ミー ホン ナーム マイ クラップ','トイレはありますか。'],
+      ['มีเมนูภาษาอังกฤษไหมครับ','mii mee-nuu phaasǎa angkrìt mái khráp','ミー メーヌー パーサー アングリット マイ クラップ','英語メニューはありますか。'],
+      ['มีที่นั่งไหมครับ','mii thîi-nâng mái khráp','ミー ティー ナン マイ クラップ','席はありますか。'],
+      ['มีห้องว่างไหมครับ','mii hɔ̂ng wâang mái khráp','ミー ホン ワーン マイ クラップ','空き部屋はありますか。'],
+      ['มีไวไฟไหมครับ','mii wai-fai mái khráp','ミー ワイファイ マイ クラップ','Wi-Fiはありますか。'],
+      ['มีน้ำแข็งไหมครับ','mii náam-khɛ̌ng mái khráp','ミー ナーム ケーン マイ クラップ','氷はありますか。']
+    ]
+  },
+  {
+    title:'ช่วย {V} ให้หน่อยครับ', area:'手伝ってもらう', slot:'tool', mode:'help',
+    pattern:'ช่วย {V} ให้หน่อยครับ', roman:'chûai {V} hâi nɔ̀i khráp', kana:'チュアイ {V} ハイ ノイ クラップ', jp:'{V}してもらえますか。',
+    concept:'ช่วย は「助ける」。動詞を入れると「〜してください／手伝ってください」になります。困った時の安全フレーズです。',
+    grammar:[
+      {label:'ช่วยの働き', text:'【ช่วย chûai】は「助ける」ですが、依頼では「〜してください」の柔らかい入口になります。ช่วย + 動詞 で、相手にしてほしい動作を頼めます。'},
+      {label:'ให้หน่อยの感じ', text:'【ให้ hâi】は「〜してあげる／くれる」の方向を作り、【หน่อย】でお願いを柔らかくします。ช่วยเขียนให้หน่อยครับ は「書いてもらえますか」。'},
+      {label:'長くても構造は簡単', text:'ช่วย｜เขียน｜ให้｜หน่อย｜ครับ と見ると、「助けて｜書く｜こちらへ｜少し｜丁寧」です。長い文でも部品は少ないです。'}
+    ],
+    notes:['ช่วย + 動詞 = 〜してください','ให้หน่อย で「〜してもらう」感','困った時ほど丁寧に'],
+    phrases:[
+      ['ช่วยเขียนให้หน่อยครับ','chûai khǐan hâi nɔ̀i khráp','チュアイ キアン ハイ ノイ クラップ','書いてもらえますか。'],
+      ['ช่วยพูดช้าๆหน่อยครับ','chûai phûut cháa cháa nɔ̀i khráp','チュアイ プート チャー チャー ノイ クラップ','ゆっくり話してください。'],
+      ['ช่วยถ่ายรูปให้หน่อยครับ','chûai thàai-rûup hâi nɔ̀i khráp','チュアイ ターイ ループ ハイ ノイ クラップ','写真を撮ってもらえますか。'],
+      ['ช่วยเรียกแท็กซี่ให้หน่อยครับ','chûai rîak táek-sîi hâi nɔ̀i khráp','チュアイ リアック タクシー ハイ ノイ クラップ','タクシーを呼んでもらえますか。'],
+      ['ช่วยดูให้หน่อยครับ','chûai duu hâi nɔ̀i khráp','チュアイ ドゥー ハイ ノイ クラップ','見てもらえますか。'],
+      ['ช่วยแปลให้หน่อยครับ','chûai bplɛɛ hâi nɔ̀i khráp','チュアイ プレ― ハイ ノイ クラップ','訳してもらえますか。']
+    ]
+  },
+  {
+    title:'ผมจองไว้ครับ', area:'ホテル・予約', slot:null,
+    pattern:'ผมจองไว้ครับ', roman:'phǒm jɔɔng wái khráp', kana:'ポム ジョーン ワイ クラップ', jp:'予約しています。',
+    concept:'ホテルでは「予約してあります」「チェックインしたいです」「荷物を預けたいです」がまず大事です。ไว้ は「しておく」の感じを出します。',
+    grammar:[
+      {label:'予約してある', text:'【จอง jɔɔng】は「予約する」。【ไว้ wái】を足すと「予約しておいた／予約してあります」の感じになります。'},
+      {label:'ผมを使う場面', text:'旅行短文では主語を省くことも多いですが、ホテル受付では【ผม phǒm】を入れると落ち着いた自己申告になります。'},
+      {label:'チェックインの言い方', text:'【เช็กอิน chék-in】は英語由来でそのまま使いやすい語です。อยากเช็กอินครับ は「チェックインしたいです」。'}
+    ],
+    notes:['ホテルではผมを入れると安心','ไว้ = しておく','英語由来語も多い'],
+    phrases:[
+      ['ผมจองไว้ครับ','phǒm jɔɔng wái khráp','ポム ジョーン ワイ クラップ','予約しています。'],
+      ['อยากเช็กอินครับ','yàak chék-in khráp','ヤーク チェックイン クラップ','チェックインしたいです。'],
+      ['ขอฝากกระเป๋าหน่อยครับ','khɔ̌ɔ fàak grà-bpǎo nɔ̀i khráp','コー ファーク グラパオ ノイ クラップ','荷物を預けたいです。'],
+      ['ห้องอยู่ชั้นไหนครับ','hɔ̂ng yùu chán nǎi khráp','ホン ユー チャン ナイ クラップ','部屋は何階ですか。'],
+      ['กุญแจอยู่ที่ไหนครับ','gun-jae yùu thîi-nǎi khráp','グンジェー ユー ティーナイ クラップ','鍵はどこですか。'],
+      ['ไวไฟใช้ยังไงครับ','wai-fai chái yang-ngai khráp','ワイファイ チャイ ヤンガイ クラップ','Wi-Fiはどう使いますか。']
+    ]
+  },
+  {
+    title:'กี่โมงครับ', area:'時間を聞く', slot:null,
+    pattern:'กี่โมงครับ', roman:'gìi moong khráp', kana:'ギー モーン クラップ', jp:'何時ですか。',
+    concept:'กี่ は「いくつ」、โมง は時間の単位です。時刻・開店時間・出発時間を聞く課です。',
+    grammar:[
+      {label:'กี่の働き', text:'【กี่ gìi】は数を聞く語です。กี่โมง で「何時」。日本語の「何」に近いですが、後ろに時間単位 โมง が来ます。'},
+      {label:'เปิดとปิด', text:'【เปิด bpə̀ət】は開く、【ปิด bpìt】は閉じる。ร้านเปิดกี่โมงครับ は「店は何時に開きますか」です。'},
+      {label:'เวลาの省略', text:'丁寧に言えば เวลา = 時間 を使えますが、旅行会話では กี่โมงครับ だけでもかなり通じます。短く確実に聞くのが大事です。'}
+    ],
+    notes:['กี่ = いくつ','โมง = 時刻','เปิด/ปิด とセット'],
+    phrases:[
+      ['กี่โมงครับ','gìi moong khráp','ギー モーン クラップ','何時ですか。'],
+      ['เปิดกี่โมงครับ','bpə̀ət gìi moong khráp','プート ギー モーン クラップ','何時に開きますか。'],
+      ['ปิดกี่โมงครับ','bpìt gìi moong khráp','ピット ギー モーン クラップ','何時に閉まりますか。'],
+      ['รถออกกี่โมงครับ','rót ɔ̀ɔk gìi moong khráp','ロット オーク ギー モーン クラップ','車／バスは何時に出ますか。'],
+      ['เจอกันกี่โมงครับ','jəə gan gìi moong khráp','ジュー ガン ギー モーン クラップ','何時に会いますか。'],
+      ['ตอนนี้กี่โมงครับ','tɔɔn-níi gìi moong khráp','トーンニー ギー モーン クラップ','今何時ですか。']
+    ]
+  },
+  {
+    title:'เจ็บ {部位} ครับ', area:'体調トラブル', slot:'health', mode:'hurt',
+    pattern:'เจ็บ {BODY} ครับ', roman:'jèp {BODY} khráp', kana:'ジェップ {BODY} クラップ', jp:'{BODY}が痛いです。',
+    concept:'เจ็บ は「痛い」。体調不良は短く確実に言えることが大事です。部位を差し替えて伝えます。',
+    grammar:[
+      {label:'痛いの基本', text:'【เจ็บ jèp】は「痛い」。เจ็บหัว は「頭が痛い」、เจ็บท้อง は「お腹が痛い」です。日本語の「が」に当たる助詞は入れず、痛い + 部位で作ります。'},
+      {label:'มากの位置', text:'【มาก mâak】は「とても」。後ろに置いて เจ็บมากครับ = とても痛いです、になります。'},
+      {label:'病院に行きたい', text:'【โรงพยาบาล roong-phayabaan】は病院。อยากไปโรงพยาบาลครับ で「病院へ行きたいです」です。'}
+    ],
+    notes:['เจ็บ + 部位','มาก = とても','緊急時は短く'],
+    phrases:[
+      ['เจ็บหัวครับ','jèp hǔa khráp','ジェップ フア クラップ','頭が痛いです。'],
+      ['เจ็บท้องครับ','jèp thɔ́ɔng khráp','ジェップ トーン クラップ','お腹が痛いです。'],
+      ['เจ็บคอครับ','jèp khɔɔ khráp','ジェップ コー クラップ','喉が痛いです。'],
+      ['ปวดหัวครับ','bpùat hǔa khráp','プワット フア クラップ','頭痛がします。'],
+      ['ไม่สบายครับ','mâi sabaai khráp','マイ サバーイ クラップ','体調が悪いです。'],
+      ['อยากไปโรงพยาบาลครับ','yàak pai roong-phayabaan khráp','ヤーク パイ ローン パヤバーン クラップ','病院へ行きたいです。']
+    ]
+  },
+  {
+    title:'อยู่ที่ไหนครับ', area:'場所を聞く', slot:null,
+    pattern:'อยู่ที่ไหนครับ', roman:'yùu thîi-nǎi khráp', kana:'ユー ティーナイ クラップ', jp:'どこにありますか。',
+    concept:'อยู่ は「いる・ある」、ที่ไหน は「どこ」。施設や場所を探すときの超重要フレーズです。',
+    grammar:[
+      {label:'อยู่の感覚', text:'【อยู่ yùu】は「いる／ある／位置している」。場所を聞く時は อยู่ที่ไหนครับ = どこにありますか、で使います。'},
+      {label:'ที่ไหนの読み方', text:'【ที่ thîi】は場所を示す語、【ไหน nǎi】は「どの」。合わさって ที่ไหน = どこ、です。'},
+      {label:'ห้องน้ำは一語っぽく覚える', text:'【ห้อง hɔ̂ng】は部屋、【น้ำ náam】は水。ห้องน้ำ は「水の部屋」からトイレ。旅行では一語として覚えると速いです。'}
+    ],
+    notes:['อยู่ = ある/いる','ที่ไหน = どこ','施設探しで強い'],
+    phrases:[
+      ['ห้องน้ำอยู่ที่ไหนครับ','hɔ̂ng-náam yùu thîi-nǎi khráp','ホンナーム ユー ティーナイ クラップ','トイレはどこですか。'],
+      ['สถานีอยู่ที่ไหนครับ','sathǎanii yùu thîi-nǎi khráp','サターニー ユー ティーナイ クラップ','駅はどこですか。'],
+      ['ทางออกอยู่ที่ไหนครับ','thaang-ɔ̀ɔk yùu thîi-nǎi khráp','ターン オーク ユー ティーナイ クラップ','出口はどこですか。'],
+      ['ร้านกาแฟอยู่ที่ไหนครับ','ráan kaa-fɛɛ yùu thîi-nǎi khráp','ラーン ガーフェー ユー ティーナイ クラップ','カフェはどこですか。'],
+      ['ที่จอดรถอยู่ที่ไหนครับ','thîi jɔ̀ɔt rót yùu thîi-nǎi khráp','ティー ジョート ロット ユー ティーナイ クラップ','駐車場はどこですか。'],
+      ['อยู่ใกล้ไหมครับ','yùu glâi mái khráp','ユー グライ マイ クラップ','近いですか。']
+    ]
+  },
+  {
+    title:'อันนี้ / อันไหน', area:'これ・それ・どれ', slot:null, mode:'demo',
+    pattern:'เอา อันนี้ ครับ   อันไหน ครับ', roman:'ao an níi khráp   an nǎi khráp', kana:'アオ アンニー クラップ / アン ナイ クラップ', jp:'これにします／どれですか。',
+    concept:'屋台・カフェ・市場では、商品名を知らなくても《指差し + อันนี้》でかなり進めます。【อัน】は「もの・個体」を受ける便利な語で、นี้・นั้น・ไหน を後ろにつけます。',
+    grammar:[
+      {label:'อัน + นี้ = これ', text:'【อัน an】は「もの・1個」を受ける語です。【นี้ níi】は「この」。合わせて【อันนี้ an níi】で「これ、この一つ」になります。メニュー名が読めなくても、指差しで使えるのが強いです。'},
+      {label:'指示語は後ろに置く', text:'タイ語では「この」が前に来る日本語と違い、【名詞 + นี้】の形が基本です。ร้านนี้ = この店、เมนูนี้ = このメニュー、อันนี้ = これ。つまり《中身を先に言って、あとから近さを足す》感じです。'},
+      {label:'ไหน = どれ・どの', text:'【ไหน nǎi】は「どれ・どの」。อันไหนครับ は「どれですか」。ที่ไหน が「どこ」だったように、ไหน は選択肢の中から場所・ものを聞く時に出ます。'},
+      {label:'読み方メモ', text:'【นี้ níi】は高めに短く伸ばす感じ、【ไหน nǎi】は低めから上がる声調です。นี้ と ไหน は見た目も音も違うので、音声で別物として覚えると看板読みも少し楽になります。'}
+    ],
+    notes:['商品名が分からなくても使える','อันนี้ = これ','อันไหน = どれ'],
+    phrases:[
+      ['เอาอันนี้ครับ','ao an níi khráp','アオ アンニー クラップ','これにします。'],
+      ['เอาอันนั้นครับ','ao an nán khráp','アオ アンナン クラップ','それにします。'],
+      ['อันไหนครับ','an nǎi khráp','アン ナイ クラップ','どれですか。'],
+      ['อันนี้เท่าไหร่ครับ','an níi thâo-rài khráp','アンニー タオライ クラップ','これはいくらですか。'],
+      ['เมนูนี้เผ็ดไหมครับ','mee-nuu níi phèt mái khráp','メーヌー ニー ペット マイ クラップ','このメニューは辛いですか。'],
+      ['ร้านนี้อร่อยไหมครับ','ráan níi arɔ̀i mái khráp','ラーン ニー アロイ マイ クラップ','この店はおいしいですか。'],
+      ['ที่นี่ใช่ไหมครับ','thîi-nîi châi mái khráp','ティーニー チャイ マイ クラップ','ここで合っていますか。'],
+      ['อันนี้ได้ไหมครับ','an níi dâi mái khráp','アンニー ダイ マイ クラップ','これで大丈夫ですか。']
+    ]
+  },
+  {
+    title:'ไม่ใส่ {X} ครับ', area:'入れないで・抜きで', slot:'food', mode:'noadd',
+    pattern:'ไม่ ใส่ {X} ครับ', roman:'mâi sài {X} khráp', kana:'マイ サイ {X} クラップ', jp:'{X}を入れないでください。',
+    concept:'屋台・カフェでかなり大事な型です。【ใส่】は「入れる」。前に【ไม่】を置いて【ไม่ใส่ X】にすると「Xを入れないで」になります。辛さ・氷・砂糖・パクチー調整に便利です。',
+    grammar:[
+      {label:'否定は前に置く', text:'【ไม่ mâi】は否定で、動詞の前に置きます。【ใส่ sài】は「入れる」。だから【ไม่ใส่ mâi sài】で「入れない」になります。動詞の形は変えません。'},
+      {label:'目的語はそのまま後ろ', text:'日本語では「砂糖を」と助詞を入れますが、タイ語では【ไม่ใส่ + X】で足ります。ไม่ใส่น้ำตาลครับ = 入れない 砂糖 丁寧、という順番です。'},
+      {label:'辛さ調整との違い', text:'【ไม่เผ็ด】は「辛くない」、【ไม่ใส่พริก】は「唐辛子を入れないで」です。前者は仕上がりの状態、後者は材料の指定です。屋台では材料指定の方が通じやすいことがあります。'},
+      {label:'読み方メモ', text:'【ใส่ sài】は s で始まり、下がる声調です。カタカナでは「サイ」ですが、最後を伸ばしすぎない方が自然です。【น้ำตาล náam-taan】は砂糖で、水の น้ำ と同じ字から始まります。'}
+    ],
+    notes:['ไม่ + 動詞 = 〜しない','ใส่ = 入れる','材料を抜きたい時に強い'],
+    phrases:[
+      ['ไม่ใส่น้ำตาลครับ','mâi sài náam-taan khráp','マイ サイ ナームターン クラップ','砂糖を入れないでください。'],
+      ['ไม่ใส่น้ำแข็งครับ','mâi sài náam-khɛ̌ng khráp','マイ サイ ナームケーン クラップ','氷を入れないでください。'],
+      ['ไม่ใส่พริกครับ','mâi sài phrík khráp','マイ サイ プリック クラップ','唐辛子を入れないでください。'],
+      ['ไม่ใส่ผักชีครับ','mâi sài phàk-chii khráp','マイ サイ パクチー クラップ','パクチーを入れないでください。'],
+      ['ไม่ใส่นมครับ','mâi sài nom khráp','マイ サイ ノム クラップ','ミルクを入れないでください。'],
+      ['หวานน้อยครับ','wǎan nɔ́ɔi khráp','ワーン ノーイ クラップ','甘さ控えめでお願いします。'],
+      ['น้ำแข็งน้อยครับ','náam-khɛ̌ng nɔ́ɔi khráp','ナームケーン ノーイ クラップ','氷少なめでお願いします。'],
+      ['เผ็ดน้อยครับ','phèt nɔ́ɔi khráp','ペット ノーイ クラップ','辛さ少なめでお願いします。']
+    ]
+  }
+
+  ,
+  {
+    title:'ขอ {X} เพิ่มหน่อยครับ', area:'もっと・追加', slot:'food', mode:'more',
+    pattern:'ขอ {X} เพิ่ม หน่อย ครับ', roman:'khɔ̌ɔ {X} phə̂əm nɔ̀i khráp', kana:'コー {X} プーム ノイ クラップ', jp:'{X}をもう少し追加してください。',
+    concept:'屋台・カフェで「もう少し」「追加で」が言えると、甘さ・氷・ソース・ご飯の調整が一気に楽になります。【เพิ่ม】は「増やす・追加する」、【อีก】は「もう一つ／もう一度」の方向です。',
+    grammar:[
+      {label:'เพิ่ม = 増やす・追加する', text:'【เพิ่ม phə̂əm】は「増やす・追加する」です。【ขอ + X + เพิ่ม + หน่อย + ครับ】で、「Xをもう少し追加してください」という柔らかい依頼になります。'},
+      {label:'なぜขอから始める？', text:'【ขอ】はお願いの入口です。後ろに【เพิ่ม】を置くことで、「ください」ではなく《追加してください》という意味になります。ขอน้ำแข็งเพิ่มหน่อยครับ は「氷を追加で少しお願いします」です。'},
+      {label:'อีกとの違い', text:'【อีก ìik】は「もう一つ・もう一度」。ขออีกอันหนึ่งครับ は「もう一つください」。一方で เพิ่ม は量を増やす感じなので、น้ำแข็งเพิ่ม = 氷を追加、ซอสเพิ่ม = ソースを追加、に向きます。'},
+      {label:'読み方メモ', text:'【เพิ่ม phə̂əm】は母音が日本語の「ウー」でも「エー」でもなく、口をあまり開けない中央寄りの音です。旅行ではまず「プーム」に寄せて、音声で長さと落ちる声調を確認します。'}
+    ],
+    notes:['เพิ่ม = 追加する','อีก = もう一つ/もう一度','量の調整で強い'],
+    phrases:[
+      ['ขอน้ำแข็งเพิ่มหน่อยครับ','khɔ̌ɔ náam-khɛ̌ng phə̂əm nɔ̀i khráp','コー ナームケーン プーム ノイ クラップ','氷をもう少し入れてください。'],
+      ['ขอน้ำตาลเพิ่มหน่อยครับ','khɔ̌ɔ náam-taan phə̂əm nɔ̀i khráp','コー ナームターン プーム ノイ クラップ','砂糖をもう少し入れてください。'],
+      ['ขอซอสเพิ่มหน่อยครับ','khɔ̌ɔ sɔ́ɔt phə̂əm nɔ̀i khráp','コー ソート プーム ノイ クラップ','ソースをもう少しください。'],
+      ['ขอข้าวเพิ่มหน่อยครับ','khɔ̌ɔ khâao phə̂əm nɔ̀i khráp','コー カーオ プーム ノイ クラップ','ご飯をもう少しください。'],
+      ['ขออีกอันหนึ่งครับ','khɔ̌ɔ ìik an nʉ̀ng khráp','コー イーク アン ヌン クラップ','もう一つください。'],
+      ['ขออีกครั้งครับ','khɔ̌ɔ ìik khráng khráp','コー イーク クラン クラップ','もう一回お願いします。'],
+      ['เพิ่มได้ไหมครับ','phə̂əm dâi mái khráp','プーム ダイ マイ クラップ','追加できますか。'],
+      ['พอแล้วครับ','phɔɔ lɛ́ɛo khráp','ポー レーオ クラップ','もう十分です。']
+    ]
+  },
+  {
+    title:'ไป {PLACE} ก่อนครับ', area:'先に・あとで', slot:'place', mode:'firstPlace',
+    pattern:'ไป {PLACE} ก่อน ครับ', roman:'pai {PLACE} gɔ̀ɔn khráp', kana:'パイ {PLACE} ゴーン クラップ', jp:'先に{PLACE}へ行きます。',
+    concept:'旅行中は「先にここ」「あとでホテル」「今は大丈夫」みたいな順番指定が多いです。【ก่อน】は「先に・まず」、【แล้วค่อย】は「それから改めて」の感じです。',
+    grammar:[
+      {label:'ก่อน = 先に・まず', text:'【ก่อน gɔ̀ɔn】は「先に・まず」。動作や行き先の後ろに置きます。ไปวัดก่อนครับ は「寺院へ先に行きます」。日本語では前に来る「先に」が、タイ語では後ろに置かれるのがポイントです。'},
+      {label:'แล้วค่อย = それから改めて', text:'【แล้ว lɛ́ɛo】は「それから／終わって」、【ค่อย khɔ̂i】は「その時になってから」の感じです。【แล้วค่อยไปโรงแรม】で「それからホテルへ行く」という順番が作れます。'},
+      {label:'ตอนนี้ = 今', text:'【ตอนนี้ tɔɔn-níi】は「今」。ตอนนี้ไม่ครับ は直訳っぽくは「今は、いいえ」ですが、旅行会話では「今は大丈夫です／今はやめておきます」の短い拒否に使いやすいです。'},
+      {label:'読み方メモ', text:'【ก่อน gɔ̀ɔn】は長めのオー寄りで低め。【ค่อย khɔ̂i】は落ちる声調です。順番を示す語は短いので、文末のครับまで落とさず言うと丁寧に聞こえます。'}
+    ],
+    notes:['ก่อน = 先に/まず','แล้วค่อย = それから','順番指定で移動が楽になる'],
+    phrases:[
+      ['ไปวัดก่อนครับ','pai wát gɔ̀ɔn khráp','パイ ワット ゴーン クラップ','先に寺院へ行きます。'],
+      ['ไปตลาดก่อนครับ','pai talàat gɔ̀ɔn khráp','パイ タラート ゴーン クラップ','先に市場へ行きます。'],
+      ['ไปโรงแรมก่อนครับ','pai roong-rɛɛm gɔ̀ɔn khráp','パイ ローンレーム ゴーン クラップ','先にホテルへ行きます。'],
+      ['แล้วค่อยไปสนามบินครับ','lɛ́ɛo khɔ̂i pai sanǎam-bin khráp','レーオ コーイ パイ サナームビン クラップ','それから空港へ行きます。'],
+      ['ขอจ่ายก่อนครับ','khɔ̌ɔ jàai gɔ̀ɔn khráp','コー ジャーイ ゴーン クラップ','先に支払います。'],
+      ['ขอคิดก่อนครับ','khɔ̌ɔ khít gɔ̀ɔn khráp','コー キット ゴーン クラップ','少し考えます。'],
+      ['ตอนนี้ไม่ครับ','tɔɔn-níi mâi khráp','トーンニー マイ クラップ','今は大丈夫です／今はやめておきます。'],
+      ['ทีหลังครับ','thii-lǎng khráp','ティーラン クラップ','あとでお願いします。']
+    ]
+  },
+  {
+    title:'สำหรับ {NUM} คนครับ', area:'人数・予約・チケット', slot:'number', mode:'people',
+    pattern:'สำหรับ {NUM} คน ครับ', roman:'sǎm-ràp {NUM} khon khráp', kana:'サムラップ {NUM} コン クラップ', jp:'{NUM}人分です／{NUM}人用です。',
+    concept:'レストラン・宿・ツアー・チケットでは「何人」「何枚」「予約が必要か」がすぐ出ます。【สำหรับ】は「〜用に」、【คน】は人を数える語、【ใบ】はチケットや紙ものを数える語です。',
+    grammar:[
+      {label:'สำหรับ = 〜用に・〜向け', text:'【สำหรับ sǎm-ràp】は「〜のために／〜用に」です。สำหรับสองคนครับ は「2人用です／2人分です」。予約や席の確認でとても使いやすい形です。'},
+      {label:'คน = 人の数え方', text:'【คน khon】は人を数える語です。หนึ่งคน = 1人、สองคน = 2人。数字のあとに คน を置きます。日本語の「人」と似ていますが、タイ語では分類詞としてかなり大事です。'},
+      {label:'ใบ = チケット・紙もの', text:'【ใบ bai】はチケット・紙・カードなどを数える時に使います。ตั๋วหนึ่งใบครับ は「チケット1枚です」。レシートの ใบเสร็จ にも同じ ใบ が見えます。'},
+      {label:'ต้องจองไหม = 予約必要？', text:'【ต้อง tɔ̂ng】は「〜しなければならない」、【จอง jɔɔng】は「予約する」。ต้องจองไหมครับ で「予約が必要ですか」と聞けます。'}
+    ],
+    notes:['สำหรับ = 〜用に','คน = 人の分類詞','ใบ = チケット/紙ものの分類詞'],
+    phrases:[
+      ['สำหรับหนึ่งคนครับ','sǎm-ràp nʉ̀ng khon khráp','サムラップ ヌン コン クラップ','1人分です。'],
+      ['สำหรับสองคนครับ','sǎm-ràp sɔ̌ɔng khon khráp','サムラップ ソーン コン クラップ','2人分です。'],
+      ['จองสำหรับสองคนครับ','jɔɔng sǎm-ràp sɔ̌ɔng khon khráp','ジョーン サムラップ ソーン コン クラップ','2人で予約しています。'],
+      ['ขอตั๋วหนึ่งใบครับ','khɔ̌ɔ tǔa nʉ̀ng bai khráp','コー トゥア ヌン バイ クラップ','チケットを1枚ください。'],
+      ['ขอตั๋วสองใบครับ','khɔ̌ɔ tǔa sɔ̌ɔng bai khráp','コー トゥア ソーン バイ クラップ','チケットを2枚ください。'],
+      ['มีตั๋วไหมครับ','mii tǔa mái khráp','ミー トゥア マイ クラップ','チケットはありますか。'],
+      ['ต้องจองไหมครับ','tɔ̂ng jɔɔng mái khráp','トン ジョーン マイ クラップ','予約が必要ですか。'],
+      ['ผู้ใหญ่หนึ่งคนครับ','phûu-yài nʉ̀ng khon khráp','プーヤイ ヌン コン クラップ','大人1人です。']
+    ]
+  }
+  ,
+  {
+    title:'ไป {PLACE} ใช้เวลากี่นาทีครับ', area:'所要時間・距離', slot:'place', mode:'duration',
+    pattern:'ไป {PLACE} ใช้เวลา กี่ นาที ครับ', roman:'pai {PLACE} chái weelaa gìi naathii khráp', kana:'パイ {PLACE} チャイ ウェーラー ギー ナーティー クラップ', jp:'{PLACE}まで何分かかりますか。',
+    concept:'移動中に「どのくらいかかる？」が聞けると、Grab・タクシー・駅・徒歩移動がかなり安心になります。【ใช้เวลา】は「時間を使う＝時間がかかる」、【กี่นาที】は「何分」です。',
+    grammar:[
+      {label:'ใช้เวลา = 時間がかかる', text:'【ใช้ chái】は「使う」、【เวลา weelaa】は「時間」です。合わせて【ใช้เวลา chái weelaa】で「時間を使う」、つまり「時間がかかる」の感じになります。'},
+      {label:'กี่นาที = 何分', text:'【กี่ gìi】は数を聞く語、【นาที naathii】は「分」です。だから【กี่นาที】で「何分」。時間の長さを聞く時のセットとして覚えると便利です。'},
+      {label:'場所は前に置く', text:'【ไปตลาดใช้เวลากี่นาทีครับ】は「市場へ行く｜時間を使う｜何分｜丁寧」という順番です。日本語の「市場まで」は、タイ語では【ไป + 場所】で先に行き先を示します。'},
+      {label:'近い・遠いも一緒に使う', text:'【ใกล้ glâi】は近い、【ไกล glai】は遠いです。声調が違って聞き分けが難しいので、旅行では文ごと【อยู่ใกล้ไหมครับ】【ไกลไหมครับ】で覚えるのが安全です。'}
+    ],
+    notes:['ใช้เวลา = 時間がかかる','กี่นาที = 何分','近い/遠いもセットで聞く'],
+    phrases:[
+      ['ไปตลาดใช้เวลากี่นาทีครับ','pai talàat chái weelaa gìi naathii khráp','パイ タラート チャイ ウェーラー ギー ナーティー クラップ','市場まで何分かかりますか。'],
+      ['ไปสนามบินใช้เวลากี่นาทีครับ','pai sanǎam-bin chái weelaa gìi naathii khráp','パイ サナームビン チャイ ウェーラー ギー ナーティー クラップ','空港まで何分かかりますか。'],
+      ['ใช้เวลาประมาณสิบห้านาทีครับ','chái weelaa pràmaan sìp-hâa naathii khráp','チャイ ウェーラー プラマーン シップハー ナーティー クラップ','だいたい15分かかります。'],
+      ['เดินไปได้ไหมครับ','dəən pai dâi mái khráp','ドゥーン パイ ダイ マイ クラップ','歩いて行けますか。'],
+      ['ไกลไหมครับ','glai mái khráp','グライ マイ クラップ','遠いですか。'],
+      ['อยู่ใกล้ไหมครับ','yùu glâi mái khráp','ユー グライ マイ クラップ','近いですか。'],
+      ['รอที่นี่ได้ไหมครับ','rɔɔ thîi-nîi dâi mái khráp','ロー ティーニー ダイ マイ クラップ','ここで待っていてもいいですか。'],
+      ['รถติดไหมครับ','rót tìt mái khráp','ロット ティット マイ クラップ','渋滞していますか。']
+    ]
+  },
+  {
+    title:'แนะนำ {X} หน่อยครับ', area:'おすすめを聞く', slot:'rec', mode:'recommend',
+    pattern:'แนะนำ {X} หน่อย ครับ', roman:'nɛ́-nam {X} nɔ̀i khráp', kana:'ネナム {X} ノイ クラップ', jp:'{X}をおすすめしてもらえますか。',
+    concept:'旅行の楽しさを増やす課です。【แนะนำ】は「すすめる・紹介する」。店員さんや宿の人に、おすすめメニュー・近くの店・おみやげを聞けるようになります。',
+    grammar:[
+      {label:'แนะนำ = おすすめする・紹介する', text:'【แนะนำ nɛ́-nam】は「すすめる／紹介する」です。日本語の「おすすめありますか？」に近い場面で使えます。発音はカタカナの「ネナム」より、前半を少し短くはっきり言います。'},
+      {label:'หน่อยでお願いを柔らかくする', text:'【แนะนำเมนูหน่อยครับ】は「メニューをおすすめしてください」。最後の【หน่อย nɔ̀i】で「ちょっとお願いできますか」という柔らかさが出ます。'},
+      {label:'มี + X + แนะนำ + ไหม', text:'【มีเมนูแนะนำไหมครับ】は「おすすめメニューはありますか」です。มี = ある、เมนูแนะนำ = おすすめメニュー、ไหม = ですか、という並びです。'},
+      {label:'อันไหนอร่อย = どれがおいしい？', text:'【อันไหน an nǎi】は「どれ」、【อร่อย arɔ̀i】は「おいしい」。メニューが読めない時は【อันไหนอร่อยครับ】でかなり実戦的です。'}
+    ],
+    notes:['แนะนำ = おすすめする','หน่อยで柔らかく頼む','อันไหนอร่อย が屋台で強い'],
+    phrases:[
+      ['แนะนำเมนูหน่อยครับ','nɛ́-nam mee-nuu nɔ̀i khráp','ネナム メーヌー ノイ クラップ','おすすめメニューを教えてください。'],
+      ['มีเมนูแนะนำไหมครับ','mii mee-nuu nɛ́-nam mái khráp','ミー メーヌー ネナム マイ クラップ','おすすめメニューはありますか。'],
+      ['อันไหนอร่อยครับ','an nǎi arɔ̀i khráp','アン ナイ アロイ クラップ','どれがおいしいですか。'],
+      ['แนะนำร้านอาหารหน่อยครับ','nɛ́-nam ráan-aa-hǎan nɔ̀i khráp','ネナム ラーンアーハーン ノイ クラップ','おすすめの食堂を教えてください。'],
+      ['แนะนำที่เที่ยวใกล้ๆหน่อยครับ','nɛ́-nam thîi-thîao glâi glâi nɔ̀i khráp','ネナム ティーティアオ グライグライ ノイ クラップ','近くの観光場所をおすすめしてください。'],
+      ['มีของฝากแนะนำไหมครับ','mii khɔ̌ɔng-fàak nɛ́-nam mái khráp','ミー コーンファーク ネナム マイ クラップ','おすすめのおみやげはありますか。'],
+      ['เอาเหมือนกันครับ','ao mʉ̌an gan khráp','アオ ムアン ガン クラップ','同じものにします。'],
+      ['อร่อยมากครับ','arɔ̀i mâak khráp','アロイ マーク クラップ','とてもおいしいです。']
+    ]
+  },
+  {
+    title:'จ่ายด้วย {X} ได้ไหมครับ', area:'支払い・レシート', slot:'pay', mode:'pay',
+    pattern:'จ่าย ด้วย {X} ได้ไหม ครับ', roman:'jàai dûai {X} dâi mái khráp', kana:'ジャーイ ドゥアイ {X} ダイ マイ クラップ', jp:'{X}で払えますか。',
+    concept:'屋台・カフェ・宿で最後に必要になる課です。【จ่าย】は「払う」、【ด้วย】は「〜で」、【ได้ไหม】は「できますか」。現金・カード・QRなど、支払い手段を入れ替えて使えます。',
+    grammar:[
+      {label:'จ่าย = 払う', text:'【จ่าย jàai】は「払う」です。注文の เอา と違って、会計の場面で使います。文頭に置いて【จ่ายด้วยบัตรได้ไหมครับ】にすると「カードで払えますか」になります。'},
+      {label:'ด้วย = 〜で・〜を使って', text:'【ด้วย dûai】は道具・手段を表す語です。ここでは《支払い手段》を後ろに置いて、ด้วยเงินสด = 現金で、ด้วยบัตร = カードで、という形にします。'},
+      {label:'ได้ไหม = できますか', text:'【ได้ dâi】は「できる」、【ไหม mái】は疑問のしるしです。だから【ได้ไหม】で「できますか？」。語順は จ่าย｜ด้วย｜X｜ได้ไหม｜ครับ と見ると、支払いの骨組みが見えます。'},
+      {label:'ใบเสร็จ = レシート', text:'レシートは【ใบเสร็จ bai-sèt】です。ขอใบเสร็จหน่อยครับ は「レシートをください」。ใบ は紙・券の分類にもよく出るので、チケット課ともつながります。'}
+    ],
+    notes:['จ่าย = 払う','ด้วย + 手段 = 〜で','ได้ไหม = できますか','ใบเสร็จ = レシート'],
+    phrases:[
+      ['จ่ายด้วยบัตรได้ไหมครับ','jàai dûai bàt dâi mái khráp','ジャーイ ドゥアイ バット ダイ マイ クラップ','カードで払えますか。'],
+      ['จ่ายด้วยเงินสดครับ','jàai dûai ngoen-sòt khráp','ジャーイ ドゥアイ グンソット クラップ','現金で払います。'],
+      ['รับบัตรไหมครับ','ráp bàt mái khráp','ラップ バット マイ クラップ','カードは使えますか。'],
+      ['คิดเงินด้วยครับ','khít ngoen dûai khráp','キット グン ドゥアイ クラップ','お会計をお願いします。'],
+      ['ขอใบเสร็จหน่อยครับ','khɔ̌ɔ bai-sèt nɔ̀i khráp','コー バイセット ノイ クラップ','レシートをください。'],
+      ['แยกบิลได้ไหมครับ','yɛ̂ɛk bin dâi mái khráp','イェーク ビン ダイ マイ クラップ','会計を分けられますか。'],
+      ['รวมกันครับ','ruam gan khráp','ルアム ガン クラップ','一緒の会計で大丈夫です。'],
+      ['ไม่เอาถุงครับ','mâi ao thǔng khráp','マイ アオ トゥン クラップ','袋はいりません。']
+    ]
+  },
+  {
+    title:'ถ่ายรูป {X} ได้ไหมครับ', area:'写真・撮影OK？', slot:'photo', mode:'photo',
+    pattern:'ถ่ายรูป {X} ได้ไหม ครับ', roman:'thàai-rûup {X} dâi mái khráp', kana:'ターイループ {X} ダイ マイ クラップ', jp:'{X}の写真を撮ってもいいですか。',
+    concept:'寺院・店内・市場・人の写真で役に立つ課です。【ถ่ายรูป】は「写真を撮る」。タイでは場所によって撮影可否が違うので、【ได้ไหมครับ】で先に聞けると安心です。',
+    grammar:[
+      {label:'ถ่ายรูป = 写真を撮る', text:'【ถ่ายรูป thàai-rûup】で「写真を撮る」です。ถ่าย は「撮る・写す」、รูป は「写真・形」。ひとかたまりで覚えると旅行中にすぐ出せます。'},
+      {label:'ที่นี่ / ข้างใน / ตรงนี้', text:'【ที่นี่ thîi-nîi】は「ここ」、【ข้างใน khâang-nai】は「中」、【ตรงนี้ trong-níi】は「この場所」です。撮影対象というより《どこで撮るか》を差し替える感覚です。'},
+      {label:'ได้ไหมで許可を聞く', text:'【ถ่ายรูปที่นี่ได้ไหมครับ】は「ここで写真を撮れますか」。ได้ไหม は「可能ですか」なので、禁止かもしれない行為をやわらかく確認できます。'},
+      {label:'ห้าม = 禁止', text:'【ห้าม hâam】は「禁止する」。ห้ามถ่ายรูปไหมครับ は「写真撮影は禁止ですか？」。禁止表示や寺院内で見かけたら、ห้าม を拾うと意味がつかみやすいです。'}
+    ],
+    notes:['ถ่ายรูป = 写真を撮る','ได้ไหม = してもいい？','ห้าม = 禁止','ที่นี่ = ここ'],
+    phrases:[
+      ['ถ่ายรูปได้ไหมครับ','thàai-rûup dâi mái khráp','ターイループ ダイ マイ クラップ','写真を撮ってもいいですか。'],
+      ['ถ่ายรูปที่นี่ได้ไหมครับ','thàai-rûup thîi-nîi dâi mái khráp','ターイループ ティーニー ダイ マイ クラップ','ここで写真を撮ってもいいですか。'],
+      ['ถ่ายรูปข้างในได้ไหมครับ','thàai-rûup khâang-nai dâi mái khráp','ターイループ カーンナイ ダイ マイ クラップ','中で写真を撮ってもいいですか。'],
+      ['ห้ามถ่ายรูปไหมครับ','hâam thàai-rûup mái khráp','ハーム ターイループ マイ クラップ','写真撮影は禁止ですか。'],
+      ['ถ่ายวิดีโอได้ไหมครับ','thàai wí-dii-oo dâi mái khráp','ターイ ウィディーオー ダイ マイ クラップ','動画を撮ってもいいですか。'],
+      ['ถ่ายรูปอาหารได้ไหมครับ','thàai-rûup aa-hǎan dâi mái khráp','ターイループ アーハーン ダイ マイ クラップ','料理の写真を撮ってもいいですか。'],
+      ['ขอถ่ายรูปหน่อยครับ','khɔ̌ɔ thàai-rûup nɔ̀i khráp','コー ターイループ ノイ クラップ','少し写真を撮らせてください。'],
+      ['ไม่ถ่ายครับ','mâi thàai khráp','マイ ターイ クラップ','撮りません。']
+    ]
+  },
+  {
+    title:'ช่วยพูด {X} หน่อยครับ', area:'聞き返し・言い換え', slot:'repeat', mode:'repeat',
+    pattern:'ช่วยพูด {X} หน่อย ครับ', roman:'chûai phûut {X} nɔ̀i khráp', kana:'チュアイ プート {X} ノイ クラップ', jp:'{X}で話してもらえますか。',
+    concept:'聞き取れない時に黙らないための課です。【ช่วย】は「助けて〜してください」、【พูด】は「話す」。ช้าๆ・อีกครั้ง・ภาษาอังกฤษ を入れると、ゆっくり、もう一度、英語で、を作れます。',
+    grammar:[
+      {label:'ช่วย + 動詞 = 〜してください', text:'【ช่วย chûai】は「助ける」ですが、会話では【ช่วย + 動詞 + หน่อย】で「ちょっと〜してください」の丁寧な依頼になります。ここでは ช่วยพูด...หน่อยครับ が土台です。'},
+      {label:'พูด = 話す', text:'【พูด phûut】は「話す」。พูดไทย は「タイ語を話す」、พูดช้าๆ は「ゆっくり話す」です。ช้าๆ は同じ語を繰り返して「ゆっくりめに」という感じを出します。'},
+      {label:'อีกครั้ง = もう一度', text:'【อีกครั้ง ìik khráng】は「もう一回」。ขออีกครั้งครับ でも通じますが、ช่วยพูดอีกครั้งหน่อยครับ とすると「もう一度言ってください」になります。'},
+      {label:'ไม่เข้าใจ = わかりません', text:'【เข้าใจ khâo-jai】は「理解する」、前に【ไม่ mâi】を置くと否定です。だから ผมไม่เข้าใจครับ は「私はわかりません」。困った時の安全フレーズです。'}
+    ],
+    notes:['ช่วย + 動詞 = 〜してください','พูด = 話す','ช้าๆ = ゆっくり','ไม่เข้าใจ = わかりません'],
+    phrases:[
+      ['ช่วยพูดช้าๆหน่อยครับ','chûai phûut cháa cháa nɔ̀i khráp','チュアイ プート チャー チャー ノイ クラップ','ゆっくり話してください。'],
+      ['ช่วยพูดอีกครั้งหน่อยครับ','chûai phûut ìik khráng nɔ̀i khráp','チュアイ プート イーク クラン ノイ クラップ','もう一度言ってください。'],
+      ['ช่วยพูดภาษาอังกฤษหน่อยครับ','chûai phûut phaasǎa angkrìt nɔ̀i khráp','チュアイ プート パーサー アングリット ノイ クラップ','英語で話してください。'],
+      ['ผมไม่เข้าใจครับ','phǒm mâi khâo-jai khráp','ポム マイ カオジャイ クラップ','わかりません。'],
+      ['ภาษาไทยยากครับ','phaasǎa thai yâak khráp','パーサー タイ ヤーク クラップ','タイ語は難しいです。'],
+      ['ผมพูดไทยได้นิดหน่อยครับ','phǒm phûut thai dâi nít-nɔ̀i khráp','ポム プート タイ ダイ ニットノイ クラップ','タイ語は少し話せます。'],
+      ['เขียนให้หน่อยได้ไหมครับ','khǐan hâi nɔ̀i dâi mái khráp','キアン ハイ ノイ ダイ マイ クラップ','書いてもらえますか。'],
+      ['เปิดแปลให้ดูได้ไหมครับ','bpə̀ət bplɛɛ hâi duu dâi mái khráp','プート プレー ハイ ドゥー ダイ マイ クラップ','翻訳を見せてもらえますか。']
+    ]
+  }
+  ,
+  {
+    title:'{X} อยู่ตรงไหนครับ', area:'トイレ・細かい場所', slot:'facility', mode:'whereFacility',
+    pattern:'{X} อยู่ ตรงไหน ครับ', roman:'{X} yùu trong-nǎi khráp', kana:'{X} ユー トロンナイ クラップ', jp:'{X}は具体的にどこですか。',
+    concept:'場所を聞く課をもう一段だけ実戦寄りにします。ที่ไหน は「どこ」、ตรงไหน は「どのあたり／具体的にどこ」。大きな施設の中でトイレ・出口・エレベーターを探すときに強い形です。',
+    grammar:[
+      {label:'อยู่ = ある・いる', text:'【อยู่ yùu】は「ある／いる／位置している」。場所を聞く時は、施設名を前に出して【X อยู่ ... ครับ】にすると「Xはどこにありますか」になります。'},
+      {label:'ตรงไหน = 具体的にどこ', text:'【ตรง trong】は「まっすぐ・その場所」、【ไหน nǎi】は「どの」。合わせて【ตรงไหน trong-nǎi】で「どの場所／具体的にどこ」です。ที่ไหน より、建物内・駅構内・店内で少し細かく聞く感じになります。'},
+      {label:'語順の見方', text:'【ห้องน้ำ อยู่ ตรงไหน ครับ】は「トイレ｜ある｜どの場所｜丁寧」。日本語の「は」「に」は出さず、語順で関係を作ります。'},
+      {label:'読み方メモ', text:'【อยู่ yùu】は「ユー」に近く、短く低め。【ตรงไหน】は「トロンナイ」ですが、ไหน は低めから上がる声調です。場所語は短くても聞き返されやすいので、ゆっくり言うのが安全です。'}
+    ],
+    notes:['อยู่ = ある/いる','ตรงไหน = 具体的にどこ','施設内で強い'],
+    phrases:[
+      ['ห้องน้ำอยู่ตรงไหนครับ','hɔ̂ng-náam yùu trong-nǎi khráp','ホンナーム ユー トロンナイ クラップ','トイレは具体的にどこですか。'],
+      ['ทางออกอยู่ตรงไหนครับ','thaang-ɔ̀ɔk yùu trong-nǎi khráp','ターンオーク ユー トロンナイ クラップ','出口はどこですか。'],
+      ['ลิฟต์อยู่ตรงไหนครับ','líp yùu trong-nǎi khráp','リフト ユー トロンナイ クラップ','エレベーターはどこですか。'],
+      ['บันไดอยู่ตรงไหนครับ','ban-dai yùu trong-nǎi khráp','バンダイ ユー トロンナイ クラップ','階段はどこですか。'],
+      ['ที่ขายตั๋วอยู่ตรงไหนครับ','thîi khǎai tǔa yùu trong-nǎi khráp','ティー カーイ トゥア ユー トロンナイ クラップ','チケット売り場はどこですか。'],
+      ['ตรงนี้ใช่ไหมครับ','trong-níi châi mái khráp','トロンニー チャイ マイ クラップ','ここで合っていますか。'],
+      ['อยู่ใกล้ไหมครับ','yùu glâi mái khráp','ユー グライ マイ クラップ','近いですか。'],
+      ['เดินไปได้ไหมครับ','dəən pai dâi mái khráp','ドゥーン パイ ダイ マイ クラップ','歩いて行けますか。']
+    ]
+  },
+  {
+    title:'ผมแพ้ {X} ครับ', area:'アレルギー・食べられない', slot:'allergy', mode:'allergy',
+    pattern:'ผม แพ้ {X} ครับ', roman:'phǒm phɛ́ɛ {X} khráp', kana:'ポム ペー {X} クラップ', jp:'私は{X}アレルギーです。',
+    concept:'食べ物まわりは「好き嫌い」より安全優先です。【แพ้】はアレルギー・体に合わないことを伝える語。【กิน ... ไม่ได้】も合わせると、「食べられません」まで言えます。',
+    grammar:[
+      {label:'แพ้ = アレルギー・負ける', text:'【แพ้ phɛ́ɛ】は本来「負ける」ですが、食べ物や薬に対しては「アレルギーがある／体に合わない」の意味で使えます。【ผมแพ้ถั่วครับ】で「私はナッツ類がだめです」。'},
+      {label:'ผมを入れる理由', text:'旅行短文では主語を省けることも多いですが、アレルギーは自分の体の話なので【ผม phǒm】を入れると安全です。男性話者の「私」です。'},
+      {label:'กิน ... ไม่ได้ = 食べられない', text:'【กิน kin】は「食べる」、【ไม่ได้ mâi dâi】は「できない」。目的語を挟んで【กิน X ไม่ได้】にすると「Xを食べられません」です。アレルギー以外の宗教・体調・好みでも使えます。'},
+      {label:'มี ... ไหม = 入っていますか', text:'材料確認は【มี X ไหมครับ】で「Xはありますか／入っていますか」。ไม่ใส่ と合わせると、「入っていますか」→「入れないでください」までつながります。'}
+    ],
+    notes:['แพ้ = アレルギー','กิน ... ไม่ได้ = 食べられない','มี ... ไหม = 入ってる？'],
+    phrases:[
+      ['ผมแพ้ถั่วครับ','phǒm phɛ́ɛ thùa khráp','ポム ペー トゥア クラップ','私はナッツ類がだめです。'],
+      ['ผมแพ้อาหารทะเลครับ','phǒm phɛ́ɛ aa-hǎan thá-lee khráp','ポム ペー アーハーン タレー クラップ','私はシーフードアレルギーです。'],
+      ['ผมแพ้นมครับ','phǒm phɛ́ɛ nom khráp','ポム ペー ノム クラップ','私はミルクがだめです。'],
+      ['ผมกินหมูไม่ได้ครับ','phǒm kin mǔu mâi dâi khráp','ポム ギン ムー マイ ダイ クラップ','豚肉は食べられません。'],
+      ['ผมกินเนื้อไม่ได้ครับ','phǒm kin nʉ́a mâi dâi khráp','ポム ギン ヌア マイ ダイ クラップ','牛肉は食べられません。'],
+      ['มีถั่วไหมครับ','mii thùa mái khráp','ミー トゥア マイ クラップ','ナッツ類は入っていますか。'],
+      ['มีนมไหมครับ','mii nom mái khráp','ミー ノム マイ クラップ','ミルクは入っていますか。'],
+      ['ไม่ใส่ถั่วได้ไหมครับ','mâi sài thùa dâi mái khráp','マイ サイ トゥア ダイ マイ クラップ','ナッツを入れないでもらえますか。']
+    ]
+  },
+  {
+    title:'ขอเปลี่ยน {X} ได้ไหมครับ', area:'変更・キャンセル', slot:'booking', mode:'change',
+    pattern:'ขอ เปลี่ยน {X} ได้ไหม ครับ', roman:'khɔ̌ɔ plìan {X} dâi mái khráp', kana:'コー プリアン {X} ダイ マイ クラップ', jp:'{X}を変更できますか。',
+    concept:'予約・チケット・ホテルでは「変える」「遅らせる」「キャンセルする」が必要になります。【เปลี่ยน】は変更、【เลื่อน】は予定をずらす、【ยกเลิก】はキャンセルです。',
+    grammar:[
+      {label:'เปลี่ยน = 変更する', text:'【เปลี่ยน plìan】は「変える・変更する」。前に【ขอ】を置いて【ขอเปลี่ยน X ได้ไหมครับ】にすると、「Xを変更できますか」という丁寧な相談になります。'},
+      {label:'ได้ไหม = できますか', text:'【ได้ไหม dâi mái】は「できますか／してもいいですか」。変更の可否は相手のルール次第なので、文末に ได้ไหม を置くと自然です。'},
+      {label:'เลื่อนとยกเลิก', text:'【เลื่อน lʉ̂an】は予定を「後ろにずらす」感じ、【ยกเลิก yók-lə̂ək】は「取り消す／キャンセル」。ホテル・交通・ツアーでそのまま使えます。'},
+      {label:'読み方メモ', text:'【เปลี่ยน】は pl で始まるので「プリアン」に近く、【ยกเลิก】は「ヨックルーク」寄りです。長い語は一気に言わず、ขอ｜เปลี่ยน｜เวลา｜ได้ไหม｜ครับ とかたまりで言うと伝わりやすいです。'}
+    ],
+    notes:['เปลี่ยน = 変更する','เลื่อน = 予定をずらす','ยกเลิก = キャンセル'],
+    phrases:[
+      ['ขอเปลี่ยนเวลาครับ','khɔ̌ɔ plìan weelaa khráp','コー プリアン ウェーラー クラップ','時間を変更したいです。'],
+      ['ขอเปลี่ยนห้องได้ไหมครับ','khɔ̌ɔ plìan hɔ̂ng dâi mái khráp','コー プリアン ホン ダイ マイ クラップ','部屋を変更できますか。'],
+      ['ขอเปลี่ยนที่นั่งได้ไหมครับ','khɔ̌ɔ plìan thîi-nâng dâi mái khráp','コー プリアン ティーナン ダイ マイ クラップ','席を変更できますか。'],
+      ['ขอเลื่อนเวลาได้ไหมครับ','khɔ̌ɔ lʉ̂an weelaa dâi mái khráp','コー ルアン ウェーラー ダイ マイ クラップ','時間を遅らせられますか。'],
+      ['ยกเลิกได้ไหมครับ','yók-lə̂ək dâi mái khráp','ヨックルーク ダイ マイ クラップ','キャンセルできますか。'],
+      ['ยังทันไหมครับ','yang than mái khráp','ヤン タン マイ クラップ','まだ間に合いますか。'],
+      ['ผมมาสายครับ','phǒm maa sǎai khráp','ポム マー サーイ クラップ','遅れて来ました。'],
+      ['พรุ่งนี้ได้ไหมครับ','phrûng-níi dâi mái khráp','プルンニー ダイ マイ クラップ','明日でも大丈夫ですか。']
+    ]
+  }
+  ,
+  {
+    title:'มีแบบ {X} กว่านี้ไหมครับ', area:'買い物で比べる', slot:'shopping', mode:'compare',
+    pattern:'มีแบบ {X} กว่านี้ไหมครับ', roman:'mii bɛ̀ɛp {X} gwàa níi mái khráp', kana:'ミー ベープ {X} グワー ニー マイ クラップ', jp:'もっと{X}ものはありますか。',
+    concept:'買い物・屋台・服・おみやげでは、商品名を知らなくても【มีแบบ ... กว่านี้ไหมครับ】で「もっと〜なタイプはありますか」と聞けます。比較の中心は【กว่า gwàa = より】です。',
+    grammar:[
+      {label:'型の形', text:'【มี mii】は「ある」、【แบบ bɛ̀ɛp】は「タイプ・形」、【กว่า gwàa】は「より」。つまり มี แบบ ถูก กว่านี้ ไหม ครับ は「ある｜タイプ｜安い｜これより｜か｜丁寧」です。'},
+      {label:'กว่านี้ の見方', text:'【นี้ níi】は「この」。だから【กว่านี้ gwàa níi】は「これより」。前に ถูก 安い、ใหญ่ 大きい、เล็ก 小さい などを置くと、今見ているものとの比較になります。'},
+      {label:'旅行での使い方', text:'値切りだけでなく、サイズ違い・色違い・辛さ違いを探す時にも使えます。強く交渉するより、まず【มีแบบ...ไหมครับ】で選択肢を聞くとやわらかいです。'}
+    ],
+    notes:['กว่า = より','นี้ = この','แบบ + 形容詞 + กว่านี้ で比較する'],
+    phrases:[
+      ['มีแบบถูกกว่านี้ไหมครับ','mii bɛ̀ɛp thùuk gwàa níi mái khráp','ミー ベープ トゥーク グワー ニー マイ クラップ','もっと安いものはありますか。'],
+      ['มีแบบเล็กกว่านี้ไหมครับ','mii bɛ̀ɛp lék gwàa níi mái khráp','ミー ベープ レック グワー ニー マイ クラップ','もっと小さいものはありますか。'],
+      ['มีแบบใหญ่กว่านี้ไหมครับ','mii bɛ̀ɛp yài gwàa níi mái khráp','ミー ベープ ヤイ グワー ニー マイ クラップ','もっと大きいものはありますか。'],
+      ['มีสีอื่นไหมครับ','mii sǐi ʉ̀ʉn mái khráp','ミー シー ウーン マイ クラップ','他の色はありますか。'],
+      ['อันไหนถูกกว่าครับ','an nǎi thùuk gwàa khráp','アン ナイ トゥーク グワー クラップ','どれが安いですか。'],
+      ['อันนี้แพงไปครับ','an níi phɛɛng bpai khráp','アン ニー ペーン パイ クラップ','これは高すぎます。'],
+      ['ลดได้ไหมครับ','lót dâi mái khráp','ロット ダイ マイ クラップ','安くできますか。'],
+      ['เอาอีกอันได้ไหมครับ','ao ìik an dâi mái khráp','アオ イーク アン ダイ マイ クラップ','もう一つ別のものにできますか。']
+    ]
+  },
+  {
+    title:'ไปทาง {X} ใช่ไหมครับ', area:'道案内を確認する', slot:'direction', mode:'direction',
+    pattern:'ไปทาง {X} ใช่ไหมครับ', roman:'pai thaang {X} châi mái khráp', kana:'パイ ターン {X} チャイ マイ クラップ', jp:'{X}の方向で合っていますか。',
+    concept:'道案内は聞き取れなくても、最後に自分で【ไปทาง ... ใช่ไหมครับ】と確認できると強いです。【ใช่ไหม】は「そうですよね？」の確認です。',
+    grammar:[
+      {label:'ทางの意味', text:'【ทาง thaang】は「道・方向」。ทางซ้าย は「左の方向」、ทางขวา は「右の方向」です。移動の【ไป pai】と合わせると「〜の方向へ行く」になります。'},
+      {label:'ใช่ไหม の働き', text:'【ใช่ châi】は「そう・正しい」、【ไหม mái】は疑問。合わせて【ใช่ไหม châi mái】で「〜で合っていますか」と確認できます。聞き返しより少し具体的です。'},
+      {label:'道案内語の固まり', text:'【ตรงไป trong bpai】は「まっすぐ行く」、【เลี้ยวซ้าย líao sáai】は「左に曲がる」、【ฝั่งตรงข้าม fàŋ trong khâam】は「向かい側」。丸ごと音で覚えると街歩きで拾いやすいです。'}
+    ],
+    notes:['ทาง = 方向','ใช่ไหม = 合っていますか','聞き取った語を復唱して確認'],
+    phrases:[
+      ['ไปทางซ้ายใช่ไหมครับ','pai thaang sáai châi mái khráp','パイ ターン サーイ チャイ マイ クラップ','左の方向で合っていますか。'],
+      ['ไปทางขวาใช่ไหมครับ','pai thaang khwǎa châi mái khráp','パイ ターン クワー チャイ マイ クラップ','右の方向で合っていますか。'],
+      ['ตรงไปใช่ไหมครับ','trong bpai châi mái khráp','トロン パイ チャイ マイ クラップ','まっすぐで合っていますか。'],
+      ['เลี้ยวซ้ายตรงนี้ไหมครับ','líao sáai trong níi mái khráp','リアオ サーイ トロン ニー マイ クラップ','ここで左に曲がりますか。'],
+      ['ข้ามถนนได้ไหมครับ','khâam thanǒn dâi mái khráp','カーム タノン ダイ マイ クラップ','道を渡っていいですか。'],
+      ['อยู่ฝั่งตรงข้ามใช่ไหมครับ','yùu fàŋ trong khâam châi mái khráp','ユー ファン トロン カーム チャイ マイ クラップ','向かい側で合っていますか。'],
+      ['ใกล้ไหมครับ','glâi mái khráp','グライ マイ クラップ','近いですか。'],
+      ['ไกลไหมครับ','glai mái khráp','グライ マイ クラップ','遠いですか。']
+    ]
+  },
+  {
+    title:'ผมทำ {X} หายครับ', area:'なくした・困った', slot:'trouble', mode:'lost',
+    pattern:'ผมทำ {X} หายครับ', roman:'phǒm tham {X} hǎai khráp', kana:'ポム タム {X} ハーイ クラップ', jp:'{X}をなくしました。',
+    concept:'旅行トラブルでは、細かい説明より先に【ผมทำ ... หายครับ】で「何をなくしたか」を伝えるのが大事です。警察・ホテル・駅で使いやすい型です。',
+    grammar:[
+      {label:'ทำ ... หาย', text:'【ทำ tham】は「する」、【หาย hǎai】は「消える・なくなる」。間に物を入れる【ทำ X หาย】で「Xをなくした」という言い方になります。'},
+      {label:'ผมを入れる理由', text:'短文では主語を省くこともありますが、トラブル時は【ผม phǒm = 私】を入れると「自分が困っている」ことがはっきりします。男性話者なら ผม + ... + ครับ が安全です。'},
+      {label:'助けをつなぐ', text:'なくした後は【ช่วย ... ให้หน่อยครับ】で「〜してもらえますか」につなげます。例：ช่วยโทรหาตำรวจให้หน่อยครับ は「警察に電話してもらえますか」です。'}
+    ],
+    notes:['ทำ X หาย = Xをなくした','トラブル時は ผม を入れる','ช่วย...ให้หน่อยครับ へつなぐ'],
+    phrases:[
+      ['ผมทำพาสปอร์ตหายครับ','phǒm tham phaasapɔ̀ɔt hǎai khráp','ポム タム パーサポート ハーイ クラップ','パスポートをなくしました。'],
+      ['ผมทำกระเป๋าสตางค์หายครับ','phǒm tham grà-bpǎo sa-dtaang hǎai khráp','ポム タム グラパオ サターン ハーイ クラップ','財布をなくしました。'],
+      ['มือถือหายครับ','mʉʉ-thʉ̌ʉ hǎai khráp','ムートゥー ハーイ クラップ','スマホがなくなりました。'],
+      ['ช่วยโทรหาตำรวจให้หน่อยครับ','chûai thoo hǎa tam-rùat hâi nɔ̀i khráp','チュアイ トー ハー タムルアット ハイ ノイ クラップ','警察に電話してもらえますか。'],
+      ['พาไปสถานีตำรวจหน่อยครับ','phaa pai sathǎanii tam-rùat nɔ̀i khráp','パー パイ サターニー タムルアット ノイ クラップ','警察署へ連れて行ってください。'],
+      ['ติดต่อสถานทูตญี่ปุ่นได้ไหมครับ','tìt-tɔ̀ɔ sathǎan-thûut yîipùn dâi mái khráp','ティットー サターントゥート イープン ダイ マイ クラップ','日本大使館に連絡できますか。'],
+      ['มีคนพูดภาษาอังกฤษได้ไหมครับ','mii khon phûut phaasǎa angkrìt dâi mái khráp','ミー コン プート パーサー アングリット ダイ マイ クラップ','英語を話せる人はいますか。'],
+      ['ขอใช้โทรศัพท์หน่อยครับ','khɔ̌ɔ chái thoorasàp nɔ̀i khráp','コー チャイ トーラサップ ノイ クラップ','電話を使わせてください。']
+    ]
+  },
+  {
+    title:'入場・予約する', area:'Ticket counter', slot:'booking2', mode:'book',
+    pattern:'จอง{X}ได้ไหมครับ', roman:'jɔɔng {X} dâi mái khráp', kana:'ジョーン {X} ダイ マイ クラップ', jp:'〜を予約できますか。',
+    concept:'人気店・マッサージ・ツアー・寺院の入場で使う課です。【จอง jɔɔng】は「予約する」、【ได้ไหม dâi mái】は「できますか」。動詞を先に置いて、最後に可否を聞くのがタイ語らしい形です。',
+    grammar:[
+      {label:'基本の形', text:'【จอง jɔɔng】は「予約する」。その後ろに《予約したいもの》を置き、最後に【ได้ไหม dâi mái】を足すと「予約できますか」になります。英語の can I book... に近い感覚です。'},
+      {label:'ได้ไหม の使い方', text:'【ได้ dâi】は「できる」、【ไหม mái】は疑問を作る語です。合わせて【ได้ไหม】で「できますか／してもいいですか」。旅行では、許可・可能・支払い・撮影・予約の全部に応用できます。'},
+      {label:'読み方メモ', text:'【จอง jɔɔng】は「ジョング」より、最後をngで鼻に抜く感じです。【ตั๋ว tǔa】はチケット、【คิว khiu】は順番・待ち列・予約枠の感じで、店や受付でよく見ます。'}
+    ],
+    notes:['จอง = 予約する','ได้ไหม = できますか','ตั๋ว はチケット','คิว は順番・枠'],
+    phrases:[
+      ['จองโต๊ะได้ไหมครับ','jɔɔng tó dâi mái khráp','ジョーン ト๊ะ ダイ マイ クラップ','テーブルを予約できますか。'],
+      ['จองทัวร์ได้ไหมครับ','jɔɔng thua dâi mái khráp','ジョーン トゥア ダイ マイ クラップ','ツアーを予約できますか。'],
+      ['จองคิวได้ไหมครับ','jɔɔng khiu dâi mái khráp','ジョーン キウ ダイ マイ クラップ','順番／予約枠を取れますか。'],
+      ['มีตั๋ววันนี้ไหมครับ','mii tǔa wan-níi mái khráp','ミー トゥア ワンニー マイ クラップ','今日のチケットはありますか。'],
+      ['ซื้อตั๋วที่นี่ได้ไหมครับ','sʉ́ʉ tǔa thîi-nîi dâi mái khráp','スー トゥア ティーニー ダイ マイ クラップ','ここでチケットを買えますか。'],
+      ['ต้องจองล่วงหน้าไหมครับ','tɔ̂ng jɔɔng lûang-nâa mái khráp','トン ジョーン ルアンナー マイ クラップ','事前予約が必要ですか。'],
+      ['มีรอบกี่โมงครับ','mii rɔ̂ɔp gìi moong khráp','ミー ロープ ギー モーン クラップ','何時の回がありますか。'],
+      ['เต็มหรือยังครับ','tem rʉ̌ʉ yang khráp','テム ルー ヤン クラップ','もう満席／いっぱいですか。']
+    ]
+  },
+  {
+    title:'返答を確認する', area:'Counter talk', slot:'answer', mode:'meaning',
+    pattern:'หมายความว่า{X}ใช่ไหมครับ', roman:'mǎai-khwaam-wâa {X} châi mái khráp', kana:'マーイクワームワー {X} チャイ マイ クラップ', jp:'〜という意味で合っていますか。',
+    concept:'相手のタイ語を全部聞き取れなくても、こちらから確認できる課です。【หมายความว่า】は「〜という意味」、【ใช่ไหม】は「合っていますか」。聞き返しより一段進んだ、安全確認の型です。',
+    grammar:[
+      {label:'文の骨組み', text:'【หมายความว่า mǎai-khwaam-wâa】は「意味する／つまり〜ということ」。その後ろに《自分が理解した内容》を入れて、最後に【ใช่ไหม châi mái】で「そうですよね？」と確認します。'},
+      {label:'なぜ便利か', text:'聞き取れない時に毎回「もう一度」だけだと詰まりやすいです。自分の理解を【เต็ม】【ปิดแล้ว】【ต้องรอ】のような短い語で返すと、相手が Yes/No で直してくれます。'},
+      {label:'読み方メモ', text:'【ใช่ไหม châi mái】は「チャイ マイ」。疑問のไหมは文末で上がり気味に言うと通じやすいです。【เต็ม tem】は満席・いっぱい、【ปิดแล้ว bpìt lɛ́ɛo】は「もう閉まった」です。'}
+    ],
+    notes:['全部聞き取れなくても確認できる','ใช่ไหม = 合っていますか','เต็ม = いっぱい','ต้องรอ = 待つ必要あり'],
+    phrases:[
+      ['หมายความว่าเต็มใช่ไหมครับ','mǎai-khwaam-wâa tem châi mái khráp','マーイクワームワー テム チャイ マイ クラップ','満席という意味で合っていますか。'],
+      ['หมายความว่าปิดแล้วใช่ไหมครับ','mǎai-khwaam-wâa bpìt lɛ́ɛo châi mái khráp','マーイクワームワー ピット レーオ チャイ マイ クラップ','もう閉まったという意味で合っていますか。'],
+      ['หมายความว่าต้องรอใช่ไหมครับ','mǎai-khwaam-wâa tɔ̂ng rɔɔ châi mái khráp','マーイクワームワー トン ロー チャイ マイ クラップ','待つ必要があるという意味で合っていますか。'],
+      ['ผมเข้าใจถูกไหมครับ','phǒm khâo-jai thùuk mái khráp','ポム カオジャイ トゥーク マイ クラップ','私の理解は合っていますか。'],
+      ['ใช้ได้ใช่ไหมครับ','chái dâi châi mái khráp','チャイ ダイ チャイ マイ クラップ','使える／大丈夫で合っていますか。'],
+      ['ไปได้ใช่ไหมครับ','pai dâi châi mái khráp','パイ ダイ チャイ マイ クラップ','行けるで合っていますか。'],
+      ['อีกกี่นาทีครับ','ìik gìi naathii khráp','イーク ギー ナーティー クラップ','あと何分ですか。'],
+      ['ช่วยเขียนให้หน่อยครับ','chûai khǐan hâi nɔ̀i khráp','チュアイ キアン ハイ ノイ クラップ','書いてもらえますか。']
+    ]
+  },
+  {
+    title:'寺院・ローカル作法', area:'Temple & local manners', slot:'manners', mode:'mustDo',
+    pattern:'ต้อง{X}ไหมครับ', roman:'tɔ̂ng {X} mái khráp', kana:'トン {X} マイ クラップ', jp:'〜する必要がありますか。',
+    concept:'寺院・ローカル食堂・市場で、失礼にならないための課です。【ต้อง tɔ̂ng】は「〜しなければならない／必要がある」。最後に【ไหม】を置くと、必要かどうかをやわらかく確認できます。',
+    grammar:[
+      {label:'ต้อง の感覚', text:'【ต้อง tɔ̂ng】は義務・必要を表します。日本語の「〜しなければならない」より強く聞こえることもありますが、【ต้อง...ไหมครับ】にすると「必要ですか？」という確認の形になります。'},
+      {label:'旅行での使いどころ', text:'寺院では【ถอดรองเท้า】靴を脱ぐ、【แต่งตัวสุภาพ】きちんとした服装をする、【คลุมไหล่】肩を覆う、などが必要なことがあります。迷ったら聞くのがいちばん安全です。'},
+      {label:'読み方メモ', text:'【ถอดรองเท้า thɔ̀ɔt rɔɔng-tháao】は「靴を脱ぐ」。ถอด が脱ぐ、รองเท้า が靴です。【ห้าม hâam】は「禁止」。ห้ามถ่ายรูป で「写真禁止」です。'}
+    ],
+    notes:['ต้อง = 必要がある','ไหม = ですか','ห้าม = 禁止','寺院では聞くのが安全'],
+    phrases:[
+      ['ต้องถอดรองเท้าไหมครับ','tɔ̂ng thɔ̀ɔt rɔɔng-tháao mái khráp','トン トート ローンターオ マイ クラップ','靴を脱ぐ必要がありますか。'],
+      ['ต้องซื้อบัตรไหมครับ','tɔ̂ng sʉ́ʉ bàt mái khráp','トン スー バット マイ クラップ','チケットを買う必要がありますか。'],
+      ['ต้องแต่งตัวสุภาพไหมครับ','tɔ̂ng dtɛ̀ng-tua sù-phâap mái khráp','トン テン トゥア スパープ マイ クラップ','きちんとした服装が必要ですか。'],
+      ['ต้องคลุมไหล่ไหมครับ','tɔ̂ng khlum lài mái khráp','トン クルム ライ マイ クラップ','肩を覆う必要がありますか。'],
+      ['เข้าไปได้ไหมครับ','khâo-pai dâi mái khráp','カオパイ ダイ マイ クラップ','中に入ってもいいですか。'],
+      ['ถ่ายรูปได้ไหมครับ','thàai-rûup dâi mái khráp','ターイループ ダイ マイ クラップ','写真を撮ってもいいですか。'],
+      ['ห้ามถ่ายรูปใช่ไหมครับ','hâam thàai-rûup châi mái khráp','ハーム ターイループ チャイ マイ クラップ','写真は禁止で合っていますか。'],
+      ['ไหว้ยังไงครับ','wâi yang-ngai khráp','ワイ ヤンガイ クラップ','どうお参りしますか。']
+    ]
+  }
+
+
+
+];
+
+const words = [
+  ['น้ำ','náam','ナーム','水','noun'],['เมนู','mee-nuu','メーヌー','メニュー','noun'],['ถุง','thǔng','トゥン','袋','noun'],['ใบเสร็จ','bai-sèt','バイセット','レシート','noun'],['อันนี้','an níi','アンニー','これ','noun'],['ห้องน้ำ','hɔ̂ng-náam','ホンナーム','トイレ','noun'],['ที่นั่ง','thîi-nâng','ティーナン','席','noun'],['ไวไฟ','wai-fai','ワイファイ','Wi-Fi','noun'],['น้ำแข็ง','náam-khɛ̌ng','ナームケーン','氷','noun'],
+  ['ข้าวผัด','khâao-phàt','カーオパット','チャーハン','food'],['ผัดไทย','phàt-thai','パッタイ','パッタイ','food'],['กาแฟเย็น','kaa-fɛɛ yen','ガーフェーイェン','アイスコーヒー','food'],['น้ำเปล่า','náam plàao','ナームプラーオ','水','food'],['ไม่เผ็ด','mâi phèt','マイペット','辛くない','food'],['เผ็ดน้อย','phèt nɔ́ɔi','ペットノーイ','少し辛い','food'],['น้ำตาล','náam-taan','ナームターン','砂糖','food'],['น้ำแข็ง','náam-khɛ̌ng','ナームケーン','氷','food'],['พริก','phrík','プリック','唐辛子','food'],['ผักชี','phàk-chii','パクチー','パクチー','food'],['นม','nom','ノム','ミルク','food'],['ซอส','sɔ́ɔt','ソート','ソース','food'],['ข้าว','khâao','カーオ','ご飯','food'],
+  ['หนึ่ง','nʉ̀ng','ヌン','1','number'],['สอง','sɔ̌ɔng','ソーン','2','number'],['สาม','sǎam','サーム','3','number'],['สี่','sìi','シー','4','number'],['ห้า','hâa','ハー','5','number'],['ยี่สิบ','yîi-sìp','イーシップ','20','number'],['สามสิบห้า','sǎam-sìp-hâa','サームシップハー','35','number'],['หนึ่งร้อย','nʉ̀ng-rɔ́ɔi','ヌンローイ','100','number'],['หนึ่งพัน','nʉ̀ng-phan','ヌンパン','1000','number'],
+  ['สนามบิน','sanǎam-bin','サナームビン','空港','place'],['โรงแรม','roong-rɛɛm','ローンレーム','ホテル','place'],['สถานีรถไฟ','sathǎanii rót-fai','サターニーロットファイ','鉄道駅','place'],['ตลาด','talàat','タラート','市場','place'],['วัด','wát','ワット','寺院','place'],['ร้านกาแฟ','ráan kaa-fɛɛ','ラーンガーフェー','カフェ','place'],['ที่นี่','thîi-nîi','ティーニー','ここ','place'],['โรงพยาบาล','roong-phayabaan','ローンパヤバーン','病院','place'],
+  ['เขียน','khǐan','キアン','書く','tool'],['พูดช้าๆ','phûut cháa cháa','プートチャーチャー','ゆっくり話す','tool'],['ถ่ายรูป','thàai-rûup','ターイループ','写真を撮る','tool'],['เรียกแท็กซี่','rîak táek-sîi','リアックタクシー','タクシーを呼ぶ','tool'],['ดู','duu','ドゥー','見る','tool'],['แปล','bplɛɛ','プレー','訳す','tool'],['ภาษาอังกฤษ','phaasǎa angkrìt','パーサーアングリット','英語','tool'],['อีกครั้ง','ìik khráng','イーククラン','もう一度','tool'],
+  ['หัว','hǔa','フア','頭','health'],['ท้อง','thɔ́ɔng','トーン','お腹','health'],['คอ','khɔɔ','コー','喉','health'],['ฟัน','fan','ファン','歯','health'],['เท้า','tháao','ターオ','足','health']
+  ,['เมนู','mee-nuu','メーヌー','メニュー','rec'],['ร้านอาหาร','ráan-aa-hǎan','ラーンアーハーン','食堂/レストラン','rec'],['ร้านกาแฟ','ráan kaa-fɛɛ','ラーンガーフェー','カフェ','rec'],['ที่เที่ยวใกล้ๆ','thîi-thîao glâi glâi','ティーティアオ グライグライ','近くの観光場所','rec'],['ของฝาก','khɔ̌ɔng-fàak','コーンファーク','おみやげ','rec'],['อันไหนอร่อย','an nǎi arɔ̀i','アンナイアロイ','どれがおいしい','rec'],
+  ['บัตร','bàt','バット','カード','pay'],['บัตรเครดิต','bàt khree-dìt','バット クレーディット','クレジットカード','pay'],['เงินสด','ngoen-sòt','グンソット','現金','pay'],['คิวอาร์','khiu-aa','キウアー','QR','pay'],['ใบเสร็จ','bai-sèt','バイセット','レシート','pay'],['บิล','bin','ビン','会計/ビル','pay'],
+  ['ที่นี่','thîi-nîi','ティーニー','ここ','photo'],['ข้างใน','khâang-nai','カーンナイ','中','photo'],['ตรงนี้','trong-níi','トロンニー','この場所','photo'],['อาหาร','aa-hǎan','アーハーン','料理','photo'],['วิดีโอ','wí-dii-oo','ウィディーオー','動画','photo'],['ป้าย','bpâai','パーイ','看板','photo'],
+  ['ช้าๆ','cháa cháa','チャー チャー','ゆっくり','repeat'],['อีกครั้ง','ìik khráng','イーク クラン','もう一度','repeat'],['ภาษาอังกฤษ','phaasǎa angkrìt','パーサー アングリット','英語','repeat'],['ให้ดู','hâi duu','ハイ ドゥー','見せる','repeat'],['เขียน','khǐan','キアン','書く','repeat']
+  ,['ทางออก','thaang-ɔ̀ɔk','ターンオーク','出口','facility'],['ลิฟต์','líp','リフト','エレベーター','facility'],['บันได','ban-dai','バンダイ','階段','facility'],['ที่ขายตั๋ว','thîi khǎai tǔa','ティー カーイ トゥア','チケット売り場','facility'],['ห้องน้ำ','hɔ̂ng-náam','ホンナーム','トイレ','facility'],['เคาน์เตอร์','khao-tə̂ə','カウンター','カウンター','facility'],
+  ['ถั่ว','thùa','トゥア','ナッツ類','allergy'],['อาหารทะเล','aa-hǎan thá-lee','アーハーン タレー','シーフード','allergy'],['นม','nom','ノム','ミルク','allergy'],['หมู','mǔu','ムー','豚肉','allergy'],['เนื้อ','nʉ́a','ヌア','牛肉','allergy'],['ไข่','khài','カイ','卵','allergy'],
+  ['เวลา','weelaa','ウェーラー','時間','booking'],['ห้อง','hɔ̂ng','ホン','部屋','booking'],['ที่นั่ง','thîi-nâng','ティーナン','席','booking'],['ตั๋ว','tǔa','トゥア','チケット','booking'],['วัน','wan','ワン','日付','booking'],['พรุ่งนี้','phrûng-níi','プルンニー','明日','booking']
+  ,['ถูก','thùuk','トゥーク','安い','shopping'],['แพง','phɛɛng','ペーン','高い','shopping'],['เล็ก','lék','レック','小さい','shopping'],['ใหญ่','yài','ヤイ','大きい','shopping'],['สีอื่น','sǐi ʉ̀ʉn','シー ウーン','他の色','shopping'],['อีกอัน','ìik an','イーク アン','もう一つ','shopping'],
+  ['ซ้าย','sáai','サーイ','左','direction'],['ขวา','khwǎa','クワー','右','direction'],['ทางนี้','thaang níi','ターン ニー','こちらの方向','direction'],['ทางนั้น','thaang nán','ターン ナン','あちらの方向','direction'],['ฝั่งตรงข้าม','fàŋ trong khâam','ファン トロン カーム','向かい側','direction'],['ใกล้','glâi','グライ','近く','direction'],
+  ['พาสปอร์ต','phaasapɔ̀ɔt','パーサポート','パスポート','trouble'],['กระเป๋าสตางค์','grà-bpǎo sa-dtaang','グラパオ サターン','財布','trouble'],['มือถือ','mʉʉ-thʉ̌ʉ','ムートゥー','スマホ','trouble'],['กุญแจ','gun-jae','グンジェー','鍵','trouble'],['กระเป๋า','grà-bpǎo','グラパオ','かばん','trouble'],['ตั๋ว','tǔa','トゥア','チケット','trouble'],
+  ['โต๊ะ','tó','ト๊ะ','テーブル','booking2'],['ทัวร์','thua','トゥア','ツアー','booking2'],['คิว','khiu','キウ','順番・予約枠','booking2'],['ห้อง','hɔ̂ng','ホーン','部屋','booking2'],['ตั๋ว','tǔa','トゥア','チケット','booking2'],
+  ['เต็ม','tem','テム','満席・いっぱい','answer'],['ปิดแล้ว','bpìt lɛ́ɛo','ピット レーオ','もう閉まった','answer'],['เปิดอยู่','bpə̀ət yùu','プート ユー','開いている','answer'],['ต้องรอ','tɔ̂ng rɔɔ','トン ロー','待つ必要がある','answer'],['ใช้ได้','chái dâi','チャイ ダイ','使える・大丈夫','answer'],['ไปได้','pai dâi','パイ ダイ','行ける','answer'],
+  ['ถอดรองเท้า','thɔ̀ɔt rɔɔng-tháao','トート ローンターオ','靴を脱ぐ','manners'],['ซื้อบัตร','sʉ́ʉ bàt','スー バット','チケットを買う','manners'],['แต่งตัวสุภาพ','dtɛ̀ng-tua sù-phâap','テン トゥア スパープ','きちんとした服装をする','manners'],['คลุมไหล่','khlum lài','クルム ライ','肩を覆う','manners'],['รอข้างนอก','rɔɔ khâang-nɔ̂ɔk','ロー カーンノーク','外で待つ','manners'],['ปิดเสียงมือถือ','bpìt sǐang mʉʉ-thʉ̌ʉ','ピット シアン ムートゥー','スマホを消音にする','manners']
+
+
+
+];
+
+const consonants = [
+['ก','ko kai','mid','k / k'],['ข','kho khai','high','kh / k'],['ฃ','kho khuat','high・旧字','kh / k'],['ค','kho khwai','low','kh / k'],['ฅ','kho khon','low・旧字','kh / k'],['ฆ','kho rakhang','low','kh / k'],['ง','ngo ngu','low','ng / ng'],['จ','cho chan','mid','ch / t'],['ฉ','cho ching','high','ch / -'],['ช','cho chang','low','ch / t'],['ซ','so so','low','s / t'],['ฌ','cho choe','low','ch / -'],['ญ','yo ying','low','y / n'],['ฎ','do chada','mid','d / t'],['ฏ','to patak','mid','t / t'],['ฐ','tho than','high','th / t'],['ฑ','tho nang montho','low','th / t'],['ฒ','tho phu-thao','low','th / t'],['ณ','no nen','low','n / n'],['ด','do dek','mid','d / t'],['ต','to tao','mid','t / t'],['ถ','tho thung','high','th / t'],['ท','tho thahan','low','th / t'],['ธ','tho thong','low','th / t'],['น','no nu','low','n / n'],['บ','bo baimai','mid','b / p'],['ป','po pla','mid','p / p'],['ผ','pho phueng','high','ph / -'],['ฝ','fo fa','high','f / -'],['พ','pho phan','low','ph / p'],['ฟ','fo fan','low','f / p'],['ภ','pho samphao','low','ph / p'],['ม','mo ma','low','m / m'],['ย','yo yak','low','y / -'],['ร','ro ruea','low','r / n'],['ล','lo ling','low','l / n'],['ว','wo waen','low','w / -'],['ศ','so sala','high','s / t'],['ษ','so ruesi','high','s / t'],['ส','so suea','high','s / t'],['ห','ho hip','high','h / -'],['ฬ','lo chula','low','l / n'],['อ','o ang','mid','ʔ / -'],['ฮ','ho nokhuk','low','h / -']
+];
+const vowels = [
+['อะ','a','ア','短いa'],['อา','aa','アー','長いaa'],['อิ','i','イ','短いi'],['อี','ii','イー','長いii'],['อึ','ʉ','ウ寄り','短いʉ'],['อือ','ʉʉ','ウー寄り','長いʉʉ'],['อุ','u','ウ','短いu'],['อู','uu','ウー','長いuu'],['เอะ','e','エ','短いe'],['เอ','ee','エー','長いee'],['แอะ','ae','ェア','短いae'],['แอ','aae','ェー','長いae'],['โอะ','o','オ','短いo'],['โอ','oo','オー','長いoo'],['เอาะ','ɔ','オ寄り','短いɔ'],['ออ','ɔɔ','オー寄り','長いɔɔ'],['เออะ','ə','ア寄り','短いə'],['เออ','əə','アー寄り','長いəə'],['เอีย','ia','イア','ia'],['เอือ','ʉa','ウア','ʉa'],['อัว','ua','ウア','ua'],['ไอ / ใอ','ai','アイ','ai'],['เอา','ao','アオ','ao'],['อำ','am','アム','am']
+];
+const numbers = [
+['0','ศูนย์','sǔun','スーン'],['1','หนึ่ง','nʉ̀ng','ヌン'],['2','สอง','sɔ̌ɔng','ソーン'],['3','สาม','sǎam','サーム'],['4','สี่','sìi','シー'],['5','ห้า','hâa','ハー'],['6','หก','hòk','ホック'],['7','เจ็ด','jèt','ジェット'],['8','แปด','bpàaet','ペート'],['9','เก้า','gâo','ガーオ'],['10','สิบ','sìp','シップ'],['11','สิบเอ็ด','sìp-èt','シップ エット'],['12','สิบสอง','sìp-sɔ̌ɔng','シップ ソーン'],['20','ยี่สิบ','yîi-sìp','イー シップ'],['21','ยี่สิบเอ็ด','yîi-sìp-èt','イー シップ エット'],['30','สามสิบ','sǎam-sìp','サーム シップ'],['100','ร้อย','rɔ́ɔi','ローイ'],['1,000','พัน','phan','パン'],['10,000','หมื่น','mʉ̀ʉn','ムーン']
+];
+const tones = [
+['สามัญ','mid tone','平ら','มา māa：平らに伸ばす'],['เอก','low tone','低い','หม่า màa：低めに置く'],['โท','falling tone','落ちる','ม่า mâa：高めから落とす'],['ตรี','high tone','高い','ม้า máa：高く短め'],['จัตวา','rising tone','上がる','หมา mǎa：低めから上がる']
+];
+let currentLesson = 0, currentPanel = 1, currentWord = null;
+const el = id => document.getElementById(id);
+let cachedVoices = [];
+function refreshVoices(){
+  if(!('speechSynthesis' in window)) return [];
+  const voices = speechSynthesis.getVoices();
+  if(voices && voices.length) cachedVoices = voices;
+  return voices && voices.length ? voices : cachedVoices;
+}
+function chooseThaiVoice(){
+  const voices = refreshVoices();
+  const thai = voices.filter(v=>/^th(-|$)/i.test(v.lang || '') || /Thai|ไทย|ภาษาไทย/i.test(`${v.name} ${v.voiceURI}`));
+  const maleHint = /(male|man|masculine|ชาย|ผู้ชาย|ปุรุษ|Krit|Niwat|Narong|Pattara|Lek)/i;
+  const femaleHint = /(female|woman|feminine|หญิง|ผู้หญิง|Kanya|Sirilak|Achara)/i;
+  return thai.find(v=>maleHint.test(`${v.name} ${v.voiceURI}`))
+      || thai.find(v=>!femaleHint.test(`${v.name} ${v.voiceURI}`))
+      || thai[0]
+      || voices.find(v=>/Thai|ไทย/i.test(`${v.name} ${v.voiceURI}`))
+      || null;
+}
+function cleanSpeakText(text){
+  return String(text || '')
+    .replace(/[\/｜|]/g,' ')
+    .replace(/\{X\}|\{NUM\}|\{PLACE\}/g,' ')
+    .replace(/[{}+]/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+function speak(text, slow=false){
+  if(!('speechSynthesis' in window)) return;
+  const spoken = cleanSpeakText(text);
+  if(!spoken) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(spoken);
+  u.lang = 'th-TH'; u.rate = slow ? 0.78 : 0.98; u.pitch = 0.82; u.volume = 1;
+  const thaiVoice = chooseThaiVoice();
+  if(thaiVoice) u.voice = thaiVoice;
+  speechSynthesis.speak(u);
+}
+function markPlaying(node){
+  document.querySelectorAll('.playing').forEach(n=>n.classList.remove('playing'));
+  if(node) { node.classList.add('playing'); setTimeout(()=>node.classList.remove('playing'),900); }
+}
+function escapeHTML(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function chip(text, role, spaced=false){return `<span class="thchip ${role} ${spaced?'spaced':''}">${escapeHTML(text)}</span>`}
+function renderParts(parts, spaced=false){
+  if(!parts || !parts.length) return '';
+  return `<span class="thparts ${spaced?'spacedParts':''}">${parts.map(p=>chip(p.text,p.role,spaced)).join(spaced?' ':'')}</span>`;
+}
+function markText(s){
+  return escapeHTML(s || '')
+    .replace(/【([^】]+)】/g,'<mark class="mk">$1</mark>')
+    .replace(/《([^》]+)》/g,'<mark class="mk2">$1</mark>');
+}
+function renderGrammar(l){
+  const items = l.grammar || [];
+  if(!items.length) return '';
+  return `<div class="grammarBox"><div class="grammarHead">文法のしくみ・読み方</div>${items.map(g=>`<div class="grammarItem"><div class="grammarLabel">${escapeHTML(g.label)}</div><p>${markText(g.text)}</p></div>`).join('')}</div>`;
+}
+
+const colorTokenRoles = [
+  ['หมายความว่า','base'],['อยู่ตรงไหน','soft'],['ใช้เวลา','soft'],['ถ่ายรูป','base'],['ถ่ายวิดีโอ','base'],['ใบเสร็จ','slot'],['แนะนำ','base'],['เปลี่ยน','base'],['สำหรับ','base'],['ตรงไหน','soft'],['ได้ไหม','soft'],['ใช่ไหม','soft'],['หน่อย','soft'],['ครับ','polite'],['ไม่','neg'],['ห้าม','neg'],['ต้อง','soft'],['อยาก','base'],['ช่วย','base'],['พูด','base'],['เขียน','base'],['เปิด','base'],['แปล','slot'],['จอง','base'],['จ่าย','base'],['ด้วย','soft'],['รับ','base'],['คิดเงิน','base'],['แยก','base'],['รวมกัน','base'],['เอา','base'],['ขอ','base'],['มี','base'],['ไป','base'],['มา','base'],['กลับ','base'],['ใส่','base'],['เพิ่ม','soft'],['อีก','soft'],['ก่อน','soft'],['กี่','soft'],['นาที','soft'],['คน','soft'],['ใบ','soft'],['ไหม','soft'],['นี้','soft'],['ไหน','soft'],['กว่า','soft'],['แบบ','soft'],['ทาง','soft'],['ทำ','base'],['หาย','neg'],['แพ้','base'],['กิน','base'],['เป็น','base'],['ผม','slot']
+].sort((a,b)=>b[0].length-a[0].length);
+function segmentFallback(body, polite){
+  const out=[]; let i=0;
+  const push=(text,role)=>{ if(text) out.push({text,role}); };
+  while(i<body.length){
+    let found=null;
+    for(const [tok,role] of colorTokenRoles){ if(body.startsWith(tok,i)){ found=[tok,role]; break; } }
+    if(found){ push(found[0],found[1]); i+=found[0].length; continue; }
+    let j=i+1;
+    while(j<body.length && !colorTokenRoles.some(([tok])=>body.startsWith(tok,j))) j++;
+    push(body.slice(i,j),'slot'); i=j;
+  }
+  push(polite,'polite');
+  return out;
+}
+function patternParts(l){
+  if(l.mode==='wantPlace') return [{text:'อยาก',role:'base'},{text:'ไป',role:'base'},{text:'{PLACE}',role:'slot'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='have') return [{text:'มี',role:'base'},{text:'{X}',role:'slot'},{text:'ไหม',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='help') return [{text:'ช่วย',role:'base'},{text:'{V}',role:'slot'},{text:'ให้',role:'soft'},{text:'หน่อย',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='hurt') return [{text:'เจ็บ',role:'base'},{text:'{BODY}',role:'slot'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='demo') return [{text:'เอา',role:'base'},{text:'อันนี้',role:'slot'},{text:'ครับ',role:'polite'},{text:'อันไหน',role:'slot'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='noadd') return [{text:'ไม่',role:'neg'},{text:'ใส่',role:'base'},{text:'{X}',role:'slot'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='more') return [{text:'ขอ',role:'base'},{text:'{X}',role:'slot'},{text:'เพิ่ม',role:'soft'},{text:'หน่อย',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='firstPlace') return [{text:'ไป',role:'base'},{text:'{PLACE}',role:'slot'},{text:'ก่อน',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='people') return [{text:'สำหรับ',role:'base'},{text:'{NUM}',role:'slot'},{text:'คน',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='duration') return [{text:'ไป',role:'base'},{text:'{PLACE}',role:'slot'},{text:'ใช้เวลา',role:'soft'},{text:'กี่',role:'soft'},{text:'นาที',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='pay') return [{text:'จ่าย',role:'base'},{text:'ด้วย',role:'soft'},{text:'{X}',role:'slot'},{text:'ได้ไหม',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='photo') return [{text:'ถ่ายรูป',role:'base'},{text:'{X}',role:'slot'},{text:'ได้ไหม',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='repeat') return [{text:'ช่วย',role:'base'},{text:'พูด',role:'base'},{text:'{X}',role:'slot'},{text:'หน่อย',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='recommend') return [{text:'แนะนำ',role:'base'},{text:'{X}',role:'slot'},{text:'หน่อย',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='whereFacility') return [{text:'{X}',role:'slot'},{text:'อยู่',role:'base'},{text:'ตรงไหน',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='allergy') return [{text:'ผม',role:'slot'},{text:'แพ้',role:'base'},{text:'{X}',role:'slot'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='change') return [{text:'ขอ',role:'base'},{text:'เปลี่ยน',role:'base'},{text:'{X}',role:'slot'},{text:'ได้ไหม',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='compare') return [{text:'มี',role:'base'},{text:'แบบ',role:'soft'},{text:'{X}',role:'slot'},{text:'กว่า',role:'soft'},{text:'นี้',role:'soft'},{text:'ไหม',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='direction') return [{text:'ไป',role:'base'},{text:'ทาง',role:'soft'},{text:'{X}',role:'slot'},{text:'ใช่ไหม',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='lost') return [{text:'ผม',role:'slot'},{text:'ทำ',role:'base'},{text:'{X}',role:'slot'},{text:'หาย',role:'neg'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='book') return [{text:'จอง',role:'base'},{text:'{X}',role:'slot'},{text:'ได้ไหม',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='meaning') return [{text:'หมายความว่า',role:'base'},{text:'{X}',role:'slot'},{text:'ใช่ไหม',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.mode==='mustDo') return [{text:'ต้อง',role:'soft'},{text:'{X}',role:'slot'},{text:'ไหม',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.slot==='noun') return [{text:'ขอ',role:'base'},{text:'{X}',role:'slot'},{text:'หน่อย',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.slot==='food') return [{text:'เอา',role:'base'},{text:'{X}',role:'slot'},{text:'ครับ',role:'polite'}];
+  if(l.slot==='number') return [{text:'{NUM}',role:'slot'},{text:'บาท',role:'soft'},{text:'ครับ',role:'polite'}];
+  if(l.slot==='place') return [{text:'ไป',role:'base'},{text:'{PLACE}',role:'slot'},{text:'ครับ',role:'polite'}];
+  if(l.title.includes('ไม่')) return [{text:'ไม่',role:'neg'},{text:'ไหม',role:'base'},{text:'ได้ไหม',role:'soft'},{text:'ครับ',role:'polite'}];
+  return [{text:l.pattern,role:'base'}];
+}
+function politeSplit(th){
+  if(th.endsWith('ครับ')) return [th.slice(0,-4), 'ครับ'];
+  return [th, ''];
+}
+function phraseParts(th, l){
+  const [body, polite] = politeSplit(th);
+  const out = [];
+  const push = (text, role) => { if(text) out.push({text, role}); };
+
+  if(l.mode==='wantPlace'){
+    if(body.startsWith('อยากไป')){ push('อยาก','base'); push('ไป','base'); push(body.slice(6),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('อยากกลับ')){ push('อยาก','base'); push('กลับ','base'); push(body.slice(8),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('อยาก')){ push('อยาก','base'); push(body.slice(4),'slot'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='have'){
+    if(body.startsWith('มี') && body.endsWith('ไหม')){ push('มี','base'); push(body.slice(2,-3),'slot'); push('ไหม','soft'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='help'){
+    if(body.startsWith('ช่วย')){
+      let mid = body.slice(4);
+      if(mid.endsWith('ให้หน่อย')){ push('ช่วย','base'); push(mid.slice(0,-8),'slot'); push('ให้','soft'); push('หน่อย','soft'); push(polite,'polite'); return out; }
+      if(mid.endsWith('หน่อย')){ push('ช่วย','base'); push(mid.slice(0,-5),'slot'); push('หน่อย','soft'); push(polite,'polite'); return out; }
+      push('ช่วย','base'); push(mid,'slot'); push(polite,'polite'); return out;
+    }
+  }
+  if(l.mode==='hurt'){
+    if(body.startsWith('เจ็บ')){ push('เจ็บ','base'); push(body.slice(4),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('ปวด')){ push('ปวด','base'); push(body.slice(3),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('ไม่')){ push('ไม่','neg'); push(body.slice(3),'base'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='demo'){
+    if(body.startsWith('เอาอัน')){ push('เอา','base'); push(body.slice(2),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('อันไหน')){ push('อันไหน','slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('อันนี้')){ push('อันนี้','slot'); push(body.slice(5),'base'); push(polite,'polite'); return out; }
+    if(body.includes('ที่นี่')){ push('ที่นี่','slot'); push(body.replace('ที่นี่',''),'base'); push(polite,'polite'); return out; }
+    if(body.includes('นี้')){ const idx=body.indexOf('นี้'); push(body.slice(0,idx),'slot'); push('นี้','soft'); push(body.slice(idx+3),'base'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='noadd'){
+    if(body.startsWith('ไม่ใส่')){ push('ไม่','neg'); push('ใส่','base'); push(body.slice(6),'slot'); push(polite,'polite'); return out; }
+    if(body.endsWith('น้อย')){ push(body.slice(0,-4),'slot'); push('น้อย','soft'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='more'){
+    if(body.startsWith('ขอ') && body.includes('เพิ่ม')){ push('ขอ','base'); let mid=body.slice(2); const idx=mid.indexOf('เพิ่ม'); push(mid.slice(0,idx),'slot'); push('เพิ่ม','soft'); let rest=mid.slice(idx+5); if(rest.includes('หน่อย')){ push('หน่อย','soft'); } push(polite,'polite'); return out; }
+    if(body.startsWith('ขออีก')){ push('ขอ','base'); push('อีก','soft'); push(body.slice(5),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('เพิ่ม')){ push('เพิ่ม','soft'); push(body.slice(5),'base'); push(polite,'polite'); return out; }
+    if(body.startsWith('พอแล้ว')){ push('พอแล้ว','base'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='firstPlace'){
+    if(body.startsWith('ไป') && body.endsWith('ก่อน')){ push('ไป','base'); push(body.slice(2,-4),'slot'); push('ก่อน','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('แล้วค่อยไป')){ push('แล้วค่อย','soft'); push('ไป','base'); push(body.slice(10),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('ขอ') && body.endsWith('ก่อน')){ push('ขอ','base'); push(body.slice(2,-4),'slot'); push('ก่อน','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ตอนนี้')){ push('ตอนนี้','slot'); push(body.slice(6),'neg'); push(polite,'polite'); return out; }
+    if(body.startsWith('ทีหลัง')){ push('ทีหลัง','soft'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='people'){
+    if(body.startsWith('สำหรับ') && body.endsWith('คน')){ push('สำหรับ','base'); push(body.slice(6,-2),'slot'); push('คน','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('จองสำหรับ') && body.endsWith('คน')){ push('จอง','base'); push('สำหรับ','base'); push(body.slice(9,-2),'slot'); push('คน','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ขอตั๋ว') && body.endsWith('ใบ')){ push('ขอ','base'); push('ตั๋ว','slot'); push(body.slice(6,-2),'slot'); push('ใบ','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('มีตั๋ว')){ push('มี','base'); push('ตั๋ว','slot'); push(body.slice(5),'soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ต้องจอง')){ push('ต้อง','soft'); push('จอง','base'); push(body.slice(7),'soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ผู้ใหญ่')){ push('ผู้ใหญ่','slot'); push(body.slice(7,-2),'slot'); push('คน','soft'); push(polite,'polite'); return out; }
+  }
+
+  if(l.mode==='duration'){
+    if(body.startsWith('ไป') && body.includes('ใช้เวลากี่นาที')){ push('ไป','base'); const mid=body.slice(2, body.indexOf('ใช้เวลา')); push(mid,'slot'); push('ใช้เวลา','soft'); push('กี่','soft'); push('นาที','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ใช้เวลา')){ push('ใช้เวลา','soft'); push(body.slice(7),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('เดินไป')){ push('เดิน','base'); push('ไป','base'); push(body.slice(6),'soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('รอ')){ push('รอ','base'); push(body.slice(2),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('รถติด')){ push('รถติด','slot'); push(body.slice(5),'soft'); push(polite,'polite'); return out; }
+    if(body.endsWith('ไหม')){ push(body.slice(0,-3),'slot'); push('ไหม','soft'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='pay'){
+    if(body.startsWith('จ่ายด้วย') && body.endsWith('ได้ไหม')){ push('จ่าย','base'); push('ด้วย','soft'); push(body.slice(8,-6),'slot'); push('ได้ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('จ่ายด้วย')){ push('จ่าย','base'); push('ด้วย','soft'); push(body.slice(8),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('รับ') && body.endsWith('ไหม')){ push('รับ','base'); push(body.slice(3,-3),'slot'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('คิดเงิน')){ push('คิดเงิน','base'); push(body.slice(7),'soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ขอใบเสร็จ')){ push('ขอ','base'); push('ใบเสร็จ','slot'); push(body.slice(10),'soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('แยกบิล')){ push('แยก','base'); push('บิล','slot'); push(body.slice(7),'soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('รวมกัน')){ push('รวมกัน','base'); push(polite,'polite'); return out; }
+    if(body.startsWith('ไม่เอา')){ push('ไม่','neg'); push('เอา','base'); push(body.slice(6),'slot'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='photo'){
+    if(body.startsWith('ถ่ายรูป') && body.endsWith('ได้ไหม')){ push('ถ่ายรูป','base'); push(body.slice(7,-6),'slot'); push('ได้ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ถ่ายวิดีโอ')){ push('ถ่าย','base'); push('วิดีโอ','slot'); push(body.slice(10,-6),'slot'); push('ได้ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ห้ามถ่ายรูป')){ push('ห้าม','neg'); push('ถ่ายรูป','base'); push(body.slice(11,-3),'slot'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ขอถ่ายรูป')){ push('ขอ','base'); push('ถ่ายรูป','base'); push(body.slice(10),'soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ไม่ถ่าย')){ push('ไม่','neg'); push('ถ่าย','base'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='repeat'){
+    if(body.startsWith('ช่วยพูด') && body.endsWith('หน่อย')){ push('ช่วย','base'); push('พูด','base'); push(body.slice(7,-5),'slot'); push('หน่อย','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ผมไม่เข้าใจ')){ push('ผม','slot'); push('ไม่','neg'); push('เข้าใจ','base'); push(polite,'polite'); return out; }
+    if(body.startsWith('ภาษาไทย')){ push('ภาษาไทย','slot'); push(body.slice(7),'base'); push(polite,'polite'); return out; }
+    if(body.startsWith('ผมพูดไทย')){ push('ผม','slot'); push('พูด','base'); push('ไทย','slot'); push(body.slice(9),'soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('เขียน')){ push('เขียน','base'); push(body.slice(5),'soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('เปิดแปล')){ push('เปิด','base'); push('แปล','slot'); push(body.slice(7),'soft'); push(polite,'polite'); return out; }
+  }
+
+  if(l.mode==='recommend'){
+    if(body.startsWith('แนะนำ') && body.endsWith('หน่อย')){ push('แนะนำ','base'); push(body.slice(5,-5),'slot'); push('หน่อย','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('มี') && body.includes('แนะนำไหม')){ push('มี','base'); const mid=body.slice(2, body.indexOf('แนะนำไหม')); push(mid,'slot'); push('แนะนำ','base'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('อันไหน')){ push('อันไหน','slot'); push(body.slice(6),'base'); push(polite,'polite'); return out; }
+    if(body.startsWith('เอา')){ push('เอา','base'); push(body.slice(3),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('อร่อย')){ push('อร่อย','slot'); push(body.slice(5),'soft'); push(polite,'polite'); return out; }
+  }
+
+
+  if(l.mode==='whereFacility'){
+    if(body.includes('อยู่ตรงไหน')){ const idx=body.indexOf('อยู่ตรงไหน'); push(body.slice(0,idx),'slot'); push('อยู่','base'); push('ตรงไหน','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ตรงนี้')){ push('ตรงนี้','slot'); push(body.slice(6,-3),'base'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('อยู่ใกล้')){ push('อยู่','base'); push('ใกล้','slot'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('เดินไป')){ push('เดิน','base'); push('ไป','base'); push('ได้ไหม','soft'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='allergy'){
+    if(body.startsWith('ผมแพ้')){ push('ผม','slot'); push('แพ้','base'); push(body.slice(5),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('ผมกิน') && body.endsWith('ไม่ได้')){ push('ผม','slot'); push('กิน','base'); push(body.slice(5,-6),'slot'); push('ไม่ได้','neg'); push(polite,'polite'); return out; }
+    if(body.startsWith('มี') && body.endsWith('ไหม')){ push('มี','base'); push(body.slice(2,-3),'slot'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ไม่ใส่') && body.endsWith('ได้ไหม')){ push('ไม่','neg'); push('ใส่','base'); push(body.slice(6,-6),'slot'); push('ได้ไหม','soft'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='change'){
+    if(body.startsWith('ขอเปลี่ยน') && body.endsWith('ได้ไหม')){ push('ขอ','base'); push('เปลี่ยน','base'); push(body.slice(9,-6),'slot'); push('ได้ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ขอเปลี่ยน')){ push('ขอ','base'); push('เปลี่ยน','base'); push(body.slice(9),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('ขอเลื่อน') && body.endsWith('ได้ไหม')){ push('ขอ','base'); push('เลื่อน','base'); push(body.slice(8,-6),'slot'); push('ได้ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ยกเลิก')){ push('ยกเลิก','base'); push(body.slice(6),'soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ยังทัน')){ push('ยัง','soft'); push('ทัน','base'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ผมมาสาย')){ push('ผม','slot'); push('มา','base'); push('สาย','slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('พรุ่งนี้')){ push('พรุ่งนี้','slot'); push(body.slice(8,-3),'soft'); push('ไหม','soft'); push(polite,'polite'); return out; }
+  }
+
+  if(l.mode==='compare'){
+    if(body.startsWith('มีแบบ') && body.includes('กว่านี้')){ push('มี','base'); push('แบบ','soft'); const idx=body.indexOf('กว่านี้'); push(body.slice(5,idx),'slot'); push('กว่า','soft'); push('นี้','soft'); if(body.endsWith('ไหม')) push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('มีสีอื่น')){ push('มี','base'); push('สีอื่น','slot'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('อันไหน') && body.includes('กว่า')){ push('อันไหน','slot'); push(body.slice(6),'base'); push(polite,'polite'); return out; }
+    if(body.startsWith('อันนี้')){ push('อันนี้','slot'); push(body.slice(5),'base'); push(polite,'polite'); return out; }
+    if(body.startsWith('ลด')){ push('ลด','base'); push(body.slice(2,-3),'soft'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('เอาอีกอัน')){ push('เอา','base'); push('อีกอัน','slot'); push(body.slice(8),'soft'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='direction'){
+    if(body.startsWith('ไปทาง') && body.endsWith('ใช่ไหม')){ push('ไป','base'); push('ทาง','soft'); push(body.slice(5,-6),'slot'); push('ใช่ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ตรงไป')){ push('ตรงไป','base'); push(body.slice(5,-6),'soft'); push('ใช่ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('เลี้ยวซ้าย')){ push('เลี้ยว','base'); push('ซ้าย','slot'); push(body.slice(10,-3),'soft'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ข้ามถนน')){ push('ข้าม','base'); push('ถนน','slot'); push(body.slice(8,-3),'soft'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('อยู่ฝั่งตรงข้าม')){ push('อยู่','base'); push('ฝั่งตรงข้าม','slot'); push('ใช่ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.endsWith('ไหม')){ push(body.slice(0,-3),'slot'); push('ไหม','soft'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='lost'){
+    if(body.startsWith('ผมทำ') && body.endsWith('หาย')){ push('ผม','slot'); push('ทำ','base'); push(body.slice(5,-3),'slot'); push('หาย','neg'); push(polite,'polite'); return out; }
+    if(body.endsWith('หาย')){ push(body.slice(0,-3),'slot'); push('หาย','neg'); push(polite,'polite'); return out; }
+    if(body.startsWith('ช่วยโทรหา')){ push('ช่วย','base'); push('โทรหา','base'); push(body.slice(9, body.indexOf('ให้หน่อย')),'slot'); push('ให้','soft'); push('หน่อย','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('พาไป')){ push('พา','base'); push('ไป','base'); push(body.slice(5,-5),'slot'); push('หน่อย','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ติดต่อ')){ push('ติดต่อ','base'); push(body.slice(6,-6),'slot'); push('ได้ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('มีคนพูด')){ push('มี','base'); push('คน','slot'); push('พูด','base'); push(body.slice(7,-6),'slot'); push('ได้ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ขอใช้')){ push('ขอ','base'); push('ใช้','base'); push(body.slice(5,-5),'slot'); push('หน่อย','soft'); push(polite,'polite'); return out; }
+  }
+
+  if(l.mode==='book'){
+    if(body.startsWith('จอง') && body.endsWith('ได้ไหม')){ push('จอง','base'); push(body.slice(3,-6),'slot'); push('ได้ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('มีตั๋ว')){ push('มี','base'); push('ตั๋ว','slot'); push(body.slice(5,-3),'slot'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ซื้อตั๋ว')){ push('ซื้อ','base'); push('ตั๋ว','slot'); push(body.slice(7,-6),'slot'); push('ได้ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ต้องจอง')){ push('ต้อง','soft'); push('จอง','base'); push(body.slice(7,-3),'slot'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('มีรอบ')){ push('มี','base'); push('รอบ','slot'); push(body.slice(5),'soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('เต็ม')){ push('เต็ม','slot'); push(body.slice(3),'soft'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='meaning'){
+    if(body.startsWith('หมายความว่า') && body.endsWith('ใช่ไหม')){ push('หมายความว่า','base'); push(body.slice(10,-7),'slot'); push('ใช่ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ผมเข้าใจ')){ push('ผม','slot'); push('เข้าใจ','base'); push(body.slice(8,-3),'soft'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.endsWith('ใช่ไหม')){ push(body.slice(0,-7),'slot'); push('ใช่ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('อีก')){ push('อีก','soft'); push(body.slice(3),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('ช่วยเขียน')){ push('ช่วย','base'); push('เขียน','base'); push(body.slice(9),'soft'); push(polite,'polite'); return out; }
+  }
+  if(l.mode==='mustDo'){
+    if(body.startsWith('ต้อง') && body.endsWith('ไหม')){ push('ต้อง','soft'); push(body.slice(4,-3),'slot'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.endsWith('ได้ไหม')){ push(body.slice(0,-6),'base'); push('ได้ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ห้าม') && body.endsWith('ใช่ไหม')){ push('ห้าม','neg'); push(body.slice(4,-7),'slot'); push('ใช่ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.startsWith('ไหว้')){ push('ไหว้','base'); push(body.slice(4),'soft'); push(polite,'polite'); return out; }
+  }
+
+  if(l.slot==='noun' && body.startsWith('ขอ')){
+    push('ขอ','base');
+    let mid = body.slice(2);
+    if(mid.endsWith('หน่อย')){
+      mid = mid.slice(0,-5);
+      push(mid,'slot'); push('หน่อย','soft');
+    }else{
+      push(mid,'slot');
+    }
+    push(polite,'polite'); return out;
+  }
+
+  if(l.slot==='food'){
+    if(body.startsWith('เอา')){ push('เอา','base'); push(body.slice(3),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('ไม่')){ push('ไม่','neg'); push(body.slice(3),'slot'); push(polite,'polite'); return out; }
+    push(body,'slot'); push(polite,'polite'); return out;
+  }
+
+  if(l.slot==='number'){
+    if(body.endsWith('บาท')){ push(body.slice(0,-3),'slot'); push('บาท','soft'); push(polite,'polite'); return out; }
+    push(body,'base'); push(polite,'polite'); return out;
+  }
+
+  if(l.slot==='place'){
+    if(body.startsWith('ไป')){ push('ไป','base'); push(body.slice(2),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('ลง')){ push('ลง','base'); push(body.slice(2),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('เลี้ยว')){ push('เลี้ยว','base'); push(body.slice(6),'slot'); push(polite,'polite'); return out; }
+    if(body.startsWith('ตรง')){ push('ตรง','base'); push(body.slice(4),'slot'); push(polite,'polite'); return out; }
+    push(body,'slot'); push(polite,'polite'); return out;
+  }
+
+  if(l.title.includes('ไม่')){
+    if(body.startsWith('ไม่')){ push('ไม่','neg'); push(body.slice(3),'base'); push(polite,'polite'); return out; }
+    if(body.endsWith('ได้ไหม')){ push(body.slice(0,-6),'slot'); push('ได้ไหม','soft'); push(polite,'polite'); return out; }
+    if(body.endsWith('ไหม')){ push(body.slice(0,-3),'slot'); push('ไหม','soft'); push(polite,'polite'); return out; }
+    push(body,'base'); push(polite,'polite'); return out;
+  }
+
+  return segmentFallback(body, polite);
+}
+function phraseCard(p){
+  const [th,ro,ka,jp]=p;
+  const l = lessons[currentLesson];
+  return `<article class="phrase speakable" data-speak="${escapeAttr(cleanSpeakText(th))}"><button class="speakmini">再生</button><div class="th" lang="th">${renderParts(phraseParts(th,l))}</div><div class="roman">${ro}</div><div class="kana">${ka}</div><div class="jp">${jp}</div></article>`;
+}
+function renderLesson(){
+  const l = lessons[currentLesson];
+  el('badge').textContent = `${currentLesson+1} / ${lessons.length}`;
+  const gen = buildGenerated();
+  el('lessonScreen').innerHTML = `
+    <section class="sheet">
+      <div class="top lesson"><div class="micro">${currentLesson+1} / ${lessons.length} · ${l.area}</div><div class="title">${l.title}</div><div class="subtitle">街でそのまま使う形を、読み方まで確認</div></div>
+      <div class="body">
+        <div class="hintbox lessonExplain">
+          <h2>今日の見方</h2>
+          <p>${markText(l.concept)}</p>
+          <div class="formula speakable" data-speak="${escapeAttr(cleanSpeakText(l.pattern))}">
+            <div class="th" lang="th">${renderParts(patternParts(l), true)}</div>
+            <div class="roman">${l.roman}</div>
+            <div class="kana">${l.kana}</div>
+            <div class="jp">${l.jp}</div>
+            <div class="functionLegend"><span class="b">動きの語</span><span class="s">入れ替え</span><span class="p">丁寧・質問</span><span class="n">否定</span></div>
+          </div>
+          ${renderGrammar(l)}
+          <div class="tagrow">${l.notes.map(n=>`<span class="tag">${n}</span>`).join('')}</div>
+        </div>
+        ${l.slot ? `<div class="generator"><div class="genlabel">右の単語をタップすると、この文に入ります</div><div class="genphrase" lang="th">${renderParts(gen.parts, false)}</div><div class="roman">${gen.ro}</div><div class="kana">${gen.ka}</div><div class="genjp">${gen.jp}</div><div class="genbtns"><button class="smallbtn" id="playGen">この文を再生</button><button class="smallbtn secondary" id="clearGen">戻す</button></div></div>` : ''}
+        <div class="cards">${l.phrases.map(phraseCard).join('')}</div>
+      </div>
+    </section>`;
+  if(el('playGen')) el('playGen').onclick = ()=>speak(buildGenerated().th);
+  if(el('clearGen')) el('clearGen').onclick = ()=>{currentWord=null; renderAll();};
+}
+function buildGenerated(){
+  const l=lessons[currentLesson];
+  if(!l.slot || !currentWord || currentWord[4]!==l.slot) return {th:l.pattern, ro:l.roman, ka:l.kana, jp:l.jp, parts:patternParts(l)};
+  const [th,ro,ka,jp]=currentWord;
+  if(l.mode==='wantPlace') return {th:`อยากไป${th}ครับ`, ro:`yàak pai ${ro} khráp`, ka:`ヤーク パイ ${ka} クラップ`, jp:`${jp}へ行きたいです。`, parts:[{text:'อยาก',role:'base'},{text:'ไป',role:'base'},{text:th,role:'slot'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='have') return {th:`มี${th}ไหมครับ`, ro:`mii ${ro} mái khráp`, ka:`ミー ${ka} マイ クラップ`, jp:`${jp}はありますか。`, parts:[{text:'มี',role:'base'},{text:th,role:'slot'},{text:'ไหม',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='help') return {th:`ช่วย${th}ให้หน่อยครับ`, ro:`chûai ${ro} hâi nɔ̀i khráp`, ka:`チュアイ ${ka} ハイ ノイ クラップ`, jp:`${jp}してもらえますか。`, parts:[{text:'ช่วย',role:'base'},{text:th,role:'slot'},{text:'ให้',role:'soft'},{text:'หน่อย',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='hurt') return {th:`เจ็บ${th}ครับ`, ro:`jèp ${ro} khráp`, ka:`ジェップ ${ka} クラップ`, jp:`${jp}が痛いです。`, parts:[{text:'เจ็บ',role:'base'},{text:th,role:'slot'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='noadd') return {th:`ไม่ใส่${th}ครับ`, ro:`mâi sài ${ro} khráp`, ka:`マイ サイ ${ka} クラップ`, jp:`${jp}を入れないでください。`, parts:[{text:'ไม่',role:'neg'},{text:'ใส่',role:'base'},{text:th,role:'slot'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='more') return {th:`ขอ${th}เพิ่มหน่อยครับ`, ro:`khɔ̌ɔ ${ro} phə̂əm nɔ̀i khráp`, ka:`コー ${ka} プーム ノイ クラップ`, jp:`${jp}をもう少し追加してください。`, parts:[{text:'ขอ',role:'base'},{text:th,role:'slot'},{text:'เพิ่ม',role:'soft'},{text:'หน่อย',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='firstPlace') return {th:`ไป${th}ก่อนครับ`, ro:`pai ${ro} gɔ̀ɔn khráp`, ka:`パイ ${ka} ゴーン クラップ`, jp:`先に${jp}へ行きます。`, parts:[{text:'ไป',role:'base'},{text:th,role:'slot'},{text:'ก่อน',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='people') return {th:`สำหรับ${th}คนครับ`, ro:`sǎm-ràp ${ro} khon khráp`, ka:`サムラップ ${ka} コン クラップ`, jp:`${jp}人分です。`, parts:[{text:'สำหรับ',role:'base'},{text:th,role:'slot'},{text:'คน',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='duration') return {th:`ไป${th}ใช้เวลากี่นาทีครับ`, ro:`pai ${ro} chái weelaa gìi naathii khráp`, ka:`パイ ${ka} チャイ ウェーラー ギー ナーティー クラップ`, jp:`${jp}まで何分かかりますか。`, parts:[{text:'ไป',role:'base'},{text:th,role:'slot'},{text:'ใช้เวลา',role:'soft'},{text:'กี่',role:'soft'},{text:'นาที',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='pay') return {th:`จ่ายด้วย${th}ได้ไหมครับ`, ro:`jàai dûai ${ro} dâi mái khráp`, ka:`ジャーイ ドゥアイ ${ka} ダイ マイ クラップ`, jp:`${jp}で払えますか。`, parts:[{text:'จ่าย',role:'base'},{text:'ด้วย',role:'soft'},{text:th,role:'slot'},{text:'ได้ไหม',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='photo') return {th:`ถ่ายรูป${th}ได้ไหมครับ`, ro:`thàai-rûup ${ro} dâi mái khráp`, ka:`ターイループ ${ka} ダイ マイ クラップ`, jp:`${jp}の写真を撮ってもいいですか。`, parts:[{text:'ถ่ายรูป',role:'base'},{text:th,role:'slot'},{text:'ได้ไหม',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='repeat') return {th:`ช่วยพูด${th}หน่อยครับ`, ro:`chûai phûut ${ro} nɔ̀i khráp`, ka:`チュアイ プート ${ka} ノイ クラップ`, jp:`${jp}で話してもらえますか。`, parts:[{text:'ช่วย',role:'base'},{text:'พูด',role:'base'},{text:th,role:'slot'},{text:'หน่อย',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='recommend') return {th:`แนะนำ${th}หน่อยครับ`, ro:`nɛ́-nam ${ro} nɔ̀i khráp`, ka:`ネナム ${ka} ノイ クラップ`, jp:`${jp}をおすすめしてもらえますか。`, parts:[{text:'แนะนำ',role:'base'},{text:th,role:'slot'},{text:'หน่อย',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='whereFacility') return {th:`${th}อยู่ตรงไหนครับ`, ro:`${ro} yùu trong-nǎi khráp`, ka:`${ka} ユー トロンナイ クラップ`, jp:`${jp}は具体的にどこですか。`, parts:[{text:th,role:'slot'},{text:'อยู่',role:'base'},{text:'ตรงไหน',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='allergy') return {th:`ผมแพ้${th}ครับ`, ro:`phǒm phɛ́ɛ ${ro} khráp`, ka:`ポム ペー ${ka} クラップ`, jp:`私は${jp}がだめです。`, parts:[{text:'ผม',role:'slot'},{text:'แพ้',role:'base'},{text:th,role:'slot'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='change') return {th:`ขอเปลี่ยน${th}ได้ไหมครับ`, ro:`khɔ̌ɔ plìan ${ro} dâi mái khráp`, ka:`コー プリアン ${ka} ダイ マイ クラップ`, jp:`${jp}を変更できますか。`, parts:[{text:'ขอ',role:'base'},{text:'เปลี่ยน',role:'base'},{text:th,role:'slot'},{text:'ได้ไหม',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='compare') return {th:`มีแบบ${th}กว่านี้ไหมครับ`, ro:`mii bɛ̀ɛp ${ro} gwàa níi mái khráp`, ka:`ミー ベープ ${ka} グワー ニー マイ クラップ`, jp:`もっと${jp}ものはありますか。`, parts:[{text:'มี',role:'base'},{text:'แบบ',role:'soft'},{text:th,role:'slot'},{text:'กว่า',role:'soft'},{text:'นี้',role:'soft'},{text:'ไหม',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='direction') return {th:`ไปทาง${th}ใช่ไหมครับ`, ro:`pai thaang ${ro} châi mái khráp`, ka:`パイ ターン ${ka} チャイ マイ クラップ`, jp:`${jp}の方向で合っていますか。`, parts:[{text:'ไป',role:'base'},{text:'ทาง',role:'soft'},{text:th,role:'slot'},{text:'ใช่ไหม',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='lost') return {th:`ผมทำ${th}หายครับ`, ro:`phǒm tham ${ro} hǎai khráp`, ka:`ポム タム ${ka} ハーイ クラップ`, jp:`${jp}をなくしました。`, parts:[{text:'ผม',role:'slot'},{text:'ทำ',role:'base'},{text:th,role:'slot'},{text:'หาย',role:'neg'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='book') return {th:`จอง${th}ได้ไหมครับ`, ro:`jɔɔng ${ro} dâi mái khráp`, ka:`ジョーン ${ka} ダイ マイ クラップ`, jp:`${jp}を予約できますか。`, parts:[{text:'จอง',role:'base'},{text:th,role:'slot'},{text:'ได้ไหม',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='meaning') return {th:`หมายความว่า${th}ใช่ไหมครับ`, ro:`mǎai-khwaam-wâa ${ro} châi mái khráp`, ka:`マーイクワームワー ${ka} チャイ マイ クラップ`, jp:`${jp}という意味で合っていますか。`, parts:[{text:'หมายความว่า',role:'base'},{text:th,role:'slot'},{text:'ใช่ไหม',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.mode==='mustDo') return {th:`ต้อง${th}ไหมครับ`, ro:`tɔ̂ng ${ro} mái khráp`, ka:`トン ${ka} マイ クラップ`, jp:`${jp}必要がありますか。`, parts:[{text:'ต้อง',role:'soft'},{text:th,role:'slot'},{text:'ไหม',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.slot==='noun') return {th:`ขอ${th}หน่อยครับ`, ro:`khɔ̌ɔ ${ro} nɔ̀i khráp`, ka:`コー ${ka} ノイ クラップ`, jp:`${jp}をください／お願いします。`, parts:[{text:'ขอ',role:'base'},{text:th,role:'slot'},{text:'หน่อย',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.slot==='food') return {th:`เอา${th}ครับ`, ro:`ao ${ro} khráp`, ka:`アオ ${ka} クラップ`, jp:`${jp}にします。`, parts:[{text:'เอา',role:'base'},{text:th,role:'slot'},{text:'ครับ',role:'polite'}]};
+  if(l.slot==='number') return {th:`${th}บาทครับ`, ro:`${ro} bàat khráp`, ka:`${ka} バート クラップ`, jp:`${jp}バーツです。`, parts:[{text:th,role:'slot'},{text:'บาท',role:'soft'},{text:'ครับ',role:'polite'}]};
+  if(l.slot==='place') return {th:`ไป${th}ครับ`, ro:`pai ${ro} khráp`, ka:`パイ ${ka} クラップ`, jp:`${jp}へ行きます。`, parts:[{text:'ไป',role:'base'},{text:th,role:'slot'},{text:'ครับ',role:'polite'}]};
+  return {th:l.pattern,ro:l.roman,ka:l.kana,jp:l.jp,parts:patternParts(l)};
+}
+function renderLeft(){
+  el('leftScreen').innerHTML = `
+    <section class="sheet"><div class="top left"><div class="micro">อ่านป้าย · 看板の入口</div><div class="title">全文字リスト</div><div class="subtitle">地名・駅名・メニューを眺めるための土台</div></div><div class="body"><p class="note">タイ文字は最初から全部読めなくても大丈夫です。まずは形を見慣れて、地名やメニューの「見たことある」を増やします。</p><div class="alphabetGrid">${consonants.map(c=>`<article class="lettercard speakable" data-speak="${c[0]}"><div class="big" lang="th">${c[0]}</div><div class="name">${c[1]}</div><div class="meta">${c[2]}｜${c[3]}</div></article>`).join('')}</div></div></section>
+    <section class="sheet"><div class="top left"><div class="micro">สระ · 母音</div><div class="title">母音ミニ表</div><div class="subtitle">看板読みの補助輪</div></div><div class="body"><div class="grid">${vowels.map(v=>`<article class="wordcard speakable" data-speak="${v[0]}"><div class="th" lang="th">${v[0]}</div><div class="roman">${v[1]}</div><div class="kana">${v[2]}</div><div class="jp">${v[3]}</div></article>`).join('')}</div></div></section>
+    <section class="sheet"><div class="top left"><div class="micro">เลข · 数字</div><div class="title">数字一覧</div><div class="subtitle">値段・時間・部屋番号</div></div><div class="body"><div class="numgrid">${numbers.map(n=>`<article class="numcard speakable" data-speak="${n[1]}"><div class="arabic">${n[0]}</div><div class="th" lang="th">${n[1]}</div><div class="roman">${n[2]}</div><div class="kana">${n[3]}</div></article>`).join('')}</div></div></section>
+    <section class="sheet"><div class="top left"><div class="micro">เสียง · 声調</div><div class="title">声調の聞き分け</div><div class="subtitle">まず耳で別物にする</div></div><div class="body"><div class="toneRow">${tones.map(t=>`<article class="tone speakable" data-speak="${t[3].split('：')[0].split(' ')[0]}"><div class="th">${t[0]}｜${t[1]}</div><div class="jp">${t[2]}：${t[3]}</div></article>`).join('')}</div></div></section>
+    <div class="footerNote">ローマ字・カタカナは旅先で口を動かすための補助です。細かい声調と母音の長さは、音声で少しずつ耳に入れていきます。</div>`;
+}
+function renderRight(){
+  const cats = [['all','全部'],['noun','物・設備'],['food','注文'],['number','数字'],['place','場所'],['facility','施設'],['tool','依頼動作'],['health','体調'],['allergy','食事制限'],['booking','変更'],['rec','おすすめ'],['pay','支払い'],['photo','写真'],['repeat','聞き返し'],['shopping','比較'],['direction','道案内'],['trouble','困った時'],['booking2','入場予約'],['answer','返答確認'],['manners','作法']];
+  const active = lessons[currentLesson].slot || 'all';
+  const filtered = active==='all' ? words : words.filter(w=>w[4]===active || w[4]==='tool');
+  el('rightScreen').innerHTML = `<section class="sheet"><div class="top right"><div class="micro">คำศัพท์ · 単語</div><div class="title">単語ストック</div><div class="subtitle">タップで例文に入る</div></div><div class="body" style="background:transparent"><div class="category">${cats.map(c=>`<button class="catbtn ${c[0]===active?'active':''}" data-cat="${c[0]}">${c[1]}</button>`).join('')}</div><p class="note">今開いている課で使いやすい単語を先に出します。単語だけ聞きたい時もタップで再生できます。</p><div class="grid">${filtered.map((w,i)=>`<article class="wordcard speakable wordPick" data-index="${words.indexOf(w)}" data-speak="${w[0]}"><div class="th" lang="th">${w[0]}</div><div class="roman">${w[1]}</div><div class="kana">${w[2]}</div><div class="jp">${w[3]}</div><span class="pill">${labelCat(w[4])}</span></article>`).join('')}</div></div></section>`;
+  document.querySelectorAll('.catbtn').forEach(btn=>btn.onclick=()=>renderWordCategory(btn.dataset.cat));
+}
+function renderWordCategory(cat){
+  const cats = [['all','全部'],['noun','物・設備'],['food','注文'],['number','数字'],['place','場所'],['facility','施設'],['tool','依頼動作'],['health','体調'],['allergy','食事制限'],['booking','変更'],['rec','おすすめ'],['pay','支払い'],['photo','写真'],['repeat','聞き返し'],['shopping','比較'],['direction','道案内'],['trouble','困った時'],['booking2','入場予約'],['answer','返答確認'],['manners','作法']];
+  const filtered = cat==='all' ? words : words.filter(w=>w[4]===cat);
+  el('rightScreen').querySelector('.category').innerHTML = cats.map(c=>`<button class="catbtn ${c[0]===cat?'active':''}" data-cat="${c[0]}">${c[1]}</button>`).join('');
+  el('rightScreen').querySelector('.grid').innerHTML = filtered.map(w=>`<article class="wordcard speakable wordPick" data-index="${words.indexOf(w)}" data-speak="${w[0]}"><div class="th" lang="th">${w[0]}</div><div class="roman">${w[1]}</div><div class="kana">${w[2]}</div><div class="jp">${w[3]}</div><span class="pill">${labelCat(w[4])}</span></article>`).join('');
+  document.querySelectorAll('.catbtn').forEach(btn=>btn.onclick=()=>renderWordCategory(btn.dataset.cat));
+  bindSpeakables();
+}
+function labelCat(c){return {noun:'物・設備',food:'注文',number:'数字',place:'場所',facility:'施設',tool:'依頼動作',health:'体調',allergy:'食事制限',booking:'変更',rec:'おすすめ',pay:'支払い',photo:'写真',repeat:'聞き返し',shopping:'比較',direction:'道案内',trouble:'困った時',booking2:'入場予約',answer:'返答確認',manners:'作法'}[c]||c}
+function toThaiNum(n){const m=['๐','๑','๒','๓','๔','๕','๖','๗','๘','๙']; return String(n).replace(/\d/g,d=>m[Number(d)]);}
+function renderTabs(){
+  el('lessonTabs').innerHTML = lessons.map((l,i)=>`<button class="tab ${i===currentLesson?'active':''}" data-lesson="${i}">${toThaiNum(i+1)}</button>`).join('');
+  document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{currentLesson=Number(t.dataset.lesson); currentWord=null; renderAll(); setPanel(1);});
+}
+function renderAll(){renderTabs(); renderLeft(); renderLesson(); renderRight(); bindSpeakables(); setPanel(currentPanel,false)}
+function setPanel(p,animate=true){
+  currentPanel = Math.max(0,Math.min(2,p));
+  const strip=el('strip');
+  strip.style.transition = animate ? 'transform .34s cubic-bezier(.18,.82,.24,1)' : 'none';
+  strip.style.transform = `translateX(${-currentPanel*33.333333}%)`;
+  document.querySelectorAll('.navbtn').forEach((b,i)=>b.classList.toggle('active',i===currentPanel));
+}
+function bindSpeakables(){
+  document.querySelectorAll('.speakable').forEach(node=>{
+    node.onclick = (e)=>{
+      const isWord = node.classList.contains('wordPick');
+      const text = node.dataset.speak;
+      if(isWord){
+        currentWord = words[Number(node.dataset.index)];
+        const l = lessons[currentLesson];
+        if(l.slot && currentWord[4]===l.slot){renderLesson(); bindSpeakables(); setPanel(1);}
+      }
+      speak(text, e.shiftKey);
+      markPlaying(node);
+    };
+    node.ondblclick = ()=>speak(node.dataset.speak,true);
+  });
+}
+function escapeAttr(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
+document.querySelectorAll('.navbtn').forEach(btn=>btn.onclick=()=>setPanel(Number(btn.dataset.panel)));
+let sx=0,sy=0,dx=0,dy=0;
+el('viewport').addEventListener('touchstart',e=>{sx=e.touches[0].clientX; sy=e.touches[0].clientY; dx=dy=0;},{passive:true});
+el('viewport').addEventListener('touchmove',e=>{dx=e.touches[0].clientX-sx; dy=e.touches[0].clientY-sy;},{passive:true});
+el('viewport').addEventListener('touchend',()=>{if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)*1.2){ if(dx<0) setPanel(currentPanel+1); else setPanel(currentPanel-1); }});
+if('speechSynthesis' in window){ speechSynthesis.onvoiceschanged = ()=>{ cachedVoices = speechSynthesis.getVoices(); }; refreshVoices(); }
+renderAll();
+setPanel(1,false);
+</script>
+</body>
+</html>
