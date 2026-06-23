@@ -374,6 +374,79 @@ body::after{
 .grammarHead::after{color:#16445e;background:rgba(255,230,109,.82)}
 .badge{color:#fff;background:rgba(20,36,56,.30);border-color:rgba(255,255,255,.36)}
 
+
+
+/* --- final v2: explanation readability + stable Thai audio polish --- */
+.hintbox.lessonExplain{
+  overflow:visible;
+  padding:11px 11px 12px;
+  background:linear-gradient(180deg,#fffdf8 0%,#fff7e6 100%);
+}
+.hintbox.lessonExplain h2{
+  font-size:clamp(.82rem,3.3vw,.98rem);
+  line-height:1.38;
+  color:#075f82;
+}
+.hintbox.lessonExplain p{
+  font-size:clamp(.62rem,2.85vw,.72rem);
+  line-height:1.78;
+  letter-spacing:.01em;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  color:#332820;
+}
+.grammarBox{
+  background:rgba(255,255,255,.55);
+  border-radius:18px;
+  padding:6px;
+}
+.grammarHead{
+  width:100%;
+  max-width:none;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  white-space:normal;
+  font-size:clamp(.62rem,2.8vw,.76rem);
+  line-height:1.45;
+  color:#ffffff;
+  text-shadow:0 1px 2px rgba(0,0,0,.22);
+}
+.grammarHead::after{content:none!important;display:none!important}
+.grammarItem{
+  padding:10px 11px;
+  overflow:visible;
+}
+.grammarLabel{
+  font-size:clamp(.66rem,2.95vw,.78rem);
+  line-height:1.45;
+  color:#075f82;
+}
+.grammarItem p{
+  font-size:clamp(.61rem,2.8vw,.72rem)!important;
+  line-height:1.76!important;
+  letter-spacing:.008em;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  color:#332820!important;
+}
+.mk{
+  padding:.02rem .08rem;
+  background:linear-gradient(transparent 48%,rgba(255,210,63,.82) 48%);
+}
+.mk2{
+  display:inline;
+  padding:.02rem .16rem;
+  background:rgba(0,168,150,.15);
+  color:#075e5b;
+}
+@media(max-width:430px){
+  .hintbox.lessonExplain{padding:10px 10px 11px}
+  .grammarBox{gap:8px;padding:6px}
+  .grammarItem{padding:9px 10px;border-radius:15px}
+  .hintbox.lessonExplain p,.grammarItem p{line-height:1.74!important}
+}
+
 </style>
 </head>
 <body>
@@ -1127,14 +1200,15 @@ function refreshVoices(){
 }
 function chooseThaiVoice(){
   const voices = refreshVoices();
-  const thai = voices.filter(v=>/^th(-|$)/i.test(v.lang || '') || /Thai|ไทย|ภาษาไทย/i.test(`${v.name} ${v.voiceURI}`));
-  const maleHint = /(male|man|masculine|ชาย|ผู้ชาย|ปุรุษ|Krit|Niwat|Narong|Pattara|Lek)/i;
-  const femaleHint = /(female|woman|feminine|หญิง|ผู้หญิง|Kanya|Sirilak|Achara)/i;
-  return thai.find(v=>maleHint.test(`${v.name} ${v.voiceURI}`))
-      || thai.find(v=>!femaleHint.test(`${v.name} ${v.voiceURI}`))
-      || thai[0]
-      || voices.find(v=>/Thai|ไทย/i.test(`${v.name} ${v.voiceURI}`))
-      || null;
+  const label = v => `${v.name || ''} ${v.voiceURI || ''} ${v.lang || ''}`;
+  const thai = voices.filter(v=>/^th(-|_|$)/i.test(v.lang || '') || /Thai|ไทย|ภาษาไทย/i.test(label(v)));
+  // Web Speech API does not expose a formal gender flag, so we infer gently from names supplied by the browser/OS.
+  // If no male-labelled Thai voice exists, fall back to any Thai voice rather than forcing a non-Thai voice.
+  const maleHint = /(male|man|masculine|ชาย|ผู้ชาย|ปุรุษ|Krit|Niwat|Narong|Pattara|Lek|Anan|Arthit|Niran|Somchai|Prasert)/i;
+  const femaleHint = /(female|woman|feminine|หญิง|ผู้หญิง|Kanya|Sirilak|Achara|Narisa|Pim|Pimjai|Suda)/i;
+  const byMale = thai.find(v=>maleHint.test(label(v)));
+  const neutralThai = thai.find(v=>!femaleHint.test(label(v)));
+  return byMale || neutralThai || thai[0] || voices.find(v=>/Thai|ไทย/i.test(label(v))) || null;
 }
 function cleanSpeakText(text){
   return String(text || '')
@@ -1150,7 +1224,7 @@ function speak(text, slow=false){
   if(!spoken) return;
   speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(spoken);
-  u.lang = 'th-TH'; u.rate = slow ? 0.78 : 0.98; u.pitch = 0.82; u.volume = 1;
+  u.lang = 'th-TH'; u.rate = slow ? 0.74 : 0.92; u.pitch = 0.82; u.volume = 1;
   const thaiVoice = chooseThaiVoice();
   if(thaiVoice) u.voice = thaiVoice;
   speechSynthesis.speak(u);
